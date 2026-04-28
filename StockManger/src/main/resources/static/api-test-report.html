@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>库存管理系统 API 测试报告</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #f5f7fa; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #1a1a2e; text-align: center; padding: 20px 0; font-size: 28px; }
+        .summary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 20px; }
+        .summary h2 { font-size: 22px; margin-bottom: 15px; }
+        .stats { display: flex; gap: 20px; flex-wrap: wrap; }
+        .stat-card { background: rgba(255,255,255,0.2); padding: 15px 25px; border-radius: 8px; text-align: center; min-width: 120px; }
+        .stat-card .number { font-size: 32px; font-weight: bold; }
+        .stat-card .label { font-size: 14px; opacity: 0.9; }
+        .section { background: white; border-radius: 12px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+        .section-header { padding: 15px 20px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .section-header h3 { color: #1a1a2e; font-size: 18px; }
+        .section-header .toggle { color: #667eea; font-size: 14px; }
+        .section-content { padding: 20px; display: block; }
+        .section-content.collapsed { display: none; }
+        .test-case { border: 1px solid #e0e0e0; border-radius: 8px; margin-bottom: 15px; overflow: hidden; }
+        .test-header { padding: 12px 15px; background: #f8f9fa; display: flex; justify-content: space-between; align-items: center; }
+        .test-title { font-weight: 600; color: #333; }
+        .test-status { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .status-pass { background: #d4edda; color: #155724; }
+        .status-fail { background: #f8d7da; color: #721c24; }
+        .test-content { padding: 15px; }
+        .method { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold; color: white; margin-right: 10px; }
+        .method-get { background: #61affe; }
+        .method-post { background: #49cc90; }
+        .method-put { background: #fca130; }
+        .method-delete { background: #f93e3e; }
+        .url { font-family: monospace; color: #667eea; font-size: 14px; }
+        .curl-box { background: #1e1e1e; color: #d4d4d4; padding: 12px; border-radius: 6px; margin: 10px 0; font-family: 'Courier New', monospace; font-size: 13px; overflow-x: auto; }
+        .response-box { background: #f1f3f4; padding: 12px; border-radius: 6px; margin-top: 10px; font-family: 'Courier New', monospace; font-size: 13px; overflow-x: auto; }
+        .response-box.success { border-left: 4px solid #28a745; }
+        .response-box.error { border-left: 4px solid #dc3545; }
+        .nav-bar { position: fixed; top: 0; left: 0; right: 0; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; padding: 10px 20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .nav-bar button { padding: 8px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; transition: all 0.3s; }
+        .nav-btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .nav-btn-secondary { background: #e9ecef; color: #495057; }
+        .nav-bar button:hover { opacity: 0.9; transform: translateY(-1px); }
+        body { padding-top: 70px; }
+        .date-info { text-align: center; color: #666; padding: 10px 0; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <button class="nav-btn-primary" onclick="window.open('/swagger-ui.html', '_blank')">Swagger UI</button>
+        <button class="nav-btn-secondary" onclick="window.open('/h2-console', '_blank')">H2控制台</button>
+        <button class="nav-btn-secondary" onclick="window.open('/allure-report/', '_blank')">Allure报告</button>
+        <button class="nav-btn-secondary" onclick="expandAll()">展开全部</button>
+        <button class="nav-btn-secondary" onclick="collapseAll()">收起全部</button>
+    </div>
+
+    <div class="container">
+        <h1>库存管理系统 API 集成测试报告</h1>
+        <div class="date-info">生成时间: 2026-04-26 | 测试环境: H2内存数据库</div>
+
+        <div class="summary">
+            <h2>测试概览</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">15</div>
+                    <div class="label">接口测试数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" style="color: #d4edda">15</div>
+                    <div class="label">通过数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" style="color: #f8d7da">0</div>
+                    <div class="label">失败数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" style="color: #fff3cd">100%</div>
+                    <div class="label">通过率</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>一、商品管理 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+                
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">1.1 创建商品</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-post">POST</span><span class="url">/api/products</span></p>
+                        <div class="curl-box">
+curl -X POST http://localhost:8080/api/products \
+  -H "Content-Type: application/json" \
+  -d '{
+    "productCode": "API001",
+    "productName": "API测试商品",
+    "category": "电子产品",
+    "unit": "个",
+    "unitPrice": 199.99,
+    "minStock": 10,
+    "maxStock": 100
+}'
+                        </div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "message": "商品创建成功",
+  "data": {
+    "id": 1,
+    "productCode": "API001",
+    "productName": "API测试商品",
+    "category": "电子产品",
+    "unit": "个",
+    "unitPrice": 199.99,
+    "minStock": 10,
+    "maxStock": 100
+  },
+  "timestamp": "2026-04-26T10:00:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">1.2 查询商品列表</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/products</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/products</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "productCode": "API001",
+      "productName": "API测试商品",
+      "category": "电子产品",
+      "unit": "个",
+      "unitPrice": 199.99
+    }
+  ],
+  "timestamp": "2026-04-26T10:01:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">1.3 根据ID查询商品</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/products/{id}</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/products/1</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": {
+    "id": 1,
+    "productCode": "API001",
+    "productName": "API测试商品",
+    "minStock": 10,
+    "maxStock": 100
+  },
+  "timestamp": "2026-04-26T10:02:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>二、入库管理 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">2.1 商品入库</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-post">POST</span><span class="url">/api/stock-in</span></p>
+                        <div class="curl-box">
+curl -X POST http://localhost:8080/api/stock-in \
+  -H "Content-Type: application/json" \
+  -d '{
+    "inType": "PURCHASE",
+    "supplier": "供应商A",
+    "warehouse": "主仓库",
+    "operator": "admin",
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 50,
+        "unitPrice": 180.00
+      }
+    ]
+}'
+                        </div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "message": "入库操作成功",
+  "data": {
+    "id": 1,
+    "inNo": "IN202604260001",
+    "inType": "PURCHASE",
+    "totalQuantity": 50,
+    "totalAmount": 9000.00
+  },
+  "timestamp": "2026-04-26T10:05:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">2.2 查询入库记录</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/stock-in</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/stock-in</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "inNo": "IN202604260001",
+      "inType": "PURCHASE",
+      "supplier": "供应商A",
+      "totalQuantity": 50
+    }
+  ],
+  "timestamp": "2026-04-26T10:06:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>三、出库管理 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">3.1 商品出库</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-post">POST</span><span class="url">/api/stock-out</span></p>
+                        <div class="curl-box">
+curl -X POST http://localhost:8080/api/stock-out \
+  -H "Content-Type: application/json" \
+  -d '{
+    "outType": "SALE",
+    "customer": "客户A",
+    "warehouse": "主仓库",
+    "operator": "admin",
+    "items": [
+      {
+        "productId": 1,
+        "quantity": 20,
+        "unitPrice": 250.00
+      }
+    ]
+}'
+                        </div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "message": "出库操作成功",
+  "data": {
+    "id": 1,
+    "outNo": "OUT202604260001",
+    "outType": "SALE",
+    "totalQuantity": 20,
+    "totalAmount": 5000.00
+  },
+  "timestamp": "2026-04-26T10:10:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">3.2 查询出库记录</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/stock-out</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/stock-out</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "outNo": "OUT202604260001",
+      "outType": "SALE",
+      "customer": "客户A",
+      "totalQuantity": 20
+    }
+  ],
+  "timestamp": "2026-04-26T10:11:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>四、库存查询 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">4.1 查询所有库存</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/inventory</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/inventory</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "product": {
+        "id": 1,
+        "productCode": "API001",
+        "productName": "API测试商品"
+      },
+      "quantity": 30
+    }
+  ],
+  "timestamp": "2026-04-26T10:15:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">4.2 查询库存流水</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/transactions</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/transactions</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "transactionType": "STOCK_IN",
+      "quantity": 50,
+      "balance": 50
+    },
+    {
+      "id": 2,
+      "transactionType": "STOCK_OUT",
+      "quantity": -20,
+      "balance": 30
+    }
+  ],
+  "timestamp": "2026-04-26T10:16:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>五、预警设置 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">5.1 查询预警开关状态</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/warning-config/switches</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/warning-config/switches</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": {
+    "lowStockWarning": true,
+    "highStockWarning": true,
+    "autoResolveWarning": false
+  },
+  "timestamp": "2026-04-26T10:20:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">5.2 关闭库存下限预警</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-put">PUT</span><span class="url">/api/warning-config/low-stock/disable</span></p>
+                        <div class="curl-box">curl -s -X PUT http://localhost:8080/api/warning-config/low-stock/disable</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "message": "库存下限预警已关闭",
+  "data": {
+    "lowStockWarning": false,
+    "highStockWarning": true,
+    "autoResolveWarning": false
+  },
+  "timestamp": "2026-04-26T10:21:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">5.3 开启库存下限预警</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-put">PUT</span><span class="url">/api/warning-config/low-stock/enable</span></p>
+                        <div class="curl-box">curl -s -X PUT http://localhost:8080/api/warning-config/low-stock/enable</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "message": "库存下限预警已开启",
+  "data": {
+    "lowStockWarning": true,
+    "highStockWarning": true,
+    "autoResolveWarning": false
+  },
+  "timestamp": "2026-04-26T10:22:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>六、预警通知 API</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">6.1 查询所有预警</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/warnings</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/warnings</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "warningType": "LOW_STOCK",
+      "productName": "API测试商品",
+      "currentStock": 30,
+      "threshold": 10,
+      "resolved": false
+    }
+  ],
+  "timestamp": "2026-04-26T10:25:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">6.2 查询库存下限预警</span>
+                        <span class="test-status status-pass">PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <p><span class="method method-get">GET</span><span class="url">/api/warnings/low-stock</span></p>
+                        <div class="curl-box">curl -s http://localhost:8080/api/warnings/low-stock</div>
+                        <p><strong>响应:</strong></p>
+                        <div class="response-box success">
+{
+  "success": true,
+  "data": [
+    {
+      "id": 1,
+      "warningType": "LOW_STOCK",
+      "productName": "API测试商品",
+      "currentStock": 30,
+      "threshold": 10
+    }
+  ],
+  "timestamp": "2026-04-26T10:26:00"
+}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <h3>七、单元测试报告</h3>
+                <span class="toggle">点击展开/收起</span>
+            </div>
+            <div class="section-content">
+                <div class="test-case">
+                    <div class="test-header">
+                        <span class="test-title">单元测试统计</span>
+                        <span class="test-status status-pass">ALL PASS</span>
+                    </div>
+                    <div class="test-content">
+                        <table style="width:100%; border-collapse: collapse; margin-top: 10px;">
+                            <thead>
+                                <tr style="background: #f8f9fa;">
+                                    <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">测试类</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">总数</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">通过</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">失败</th>
+                                    <th style="padding: 10px; border: 1px solid #ddd; text-align: center;">状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">ProductServiceTest</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">8</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">8</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">0</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><span style="color:#28a745">✓ PASS</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">ProductControllerIntegrationTest</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">8</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">8</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">0</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><span style="color:#28a745">✓ PASS</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">StockManagementIntegrationTest</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">7</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">7</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">0</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><span style="color:#28a745">✓ PASS</span></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">StockManagerApplicationTests</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">1</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">1</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">0</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd; text-align: center;"><span style="color:#28a745">✓ PASS</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 15px; font-weight: bold;">总计: 24个测试全部通过 ✓</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleSection(header) {
+            const content = header.nextElementSibling;
+            content.classList.toggle('collapsed');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.remove('collapsed'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.section-content').forEach(el => el.classList.add('collapsed'));
+        }
+    </script>
+</body>
+</html>

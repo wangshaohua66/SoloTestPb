@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.qrcode.controller.MainController"
+            prefWidth="1200" prefHeight="800">
+    
+    <top>
+        <MenuBar>
+            <Menu text="文件">
+                <MenuItem text="新建二维码" onAction="#handleNewQRCode"/>
+                <MenuItem text="打开二维码图片" onAction="#handleOpenImage"/>
+                <MenuItem text="保存" onAction="#handleSave"/>
+                <SeparatorMenuItem/>
+                <MenuItem text="退出" onAction="#handleExit"/>
+            </Menu>
+            <Menu text="编辑">
+                <MenuItem text="复制内容" onAction="#handleCopyContent"/>
+                <MenuItem text="粘贴内容" onAction="#handlePasteContent"/>
+            </Menu>
+            <Menu text="批量处理">
+                <MenuItem text="批量生成" onAction="#handleBatchGenerate"/>
+                <MenuItem text="批量识别" onAction="#handleBatchRecognize"/>
+            </Menu>
+            <Menu text="高级功能">
+                <MenuItem text="加密二维码" onAction="#handleEncrypt"/>
+                <MenuItem text="解密二维码" onAction="#handleDecrypt"/>
+                <MenuItem text="修复二维码" onAction="#handleRepair"/>
+                <MenuItem text="对比二维码" onAction="#handleCompare"/>
+            </Menu>
+            <Menu text="帮助">
+                <MenuItem text="关于" onAction="#handleAbout"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    
+    <left>
+        <VBox spacing="10" style="-fx-background-color: #f0f0f0;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            
+            <Label text="功能导航" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+            
+            <ToggleGroup fx:id="functionGroup"/>
+            
+            <ToggleButton text="生成二维码" fx:id="btnGenerate" toggleGroup="$functionGroup" 
+                         selected="true" onAction="#handleFunctionSelect"
+                         style="-fx-pref-width: 150px;"/>
+            <ToggleButton text="识别二维码" fx:id="btnRecognize" toggleGroup="$functionGroup"
+                         onAction="#handleFunctionSelect"
+                         style="-fx-pref-width: 150px;"/>
+            <ToggleButton text="批量处理" fx:id="btnBatch" toggleGroup="$functionGroup"
+                         onAction="#handleFunctionSelect"
+                         style="-fx-pref-width: 150px;"/>
+            <ToggleButton text="二维码管理" fx:id="btnManage" toggleGroup="$functionGroup"
+                         onAction="#handleFunctionSelect"
+                         style="-fx-pref-width: 150px;"/>
+            <ToggleButton text="高级功能" fx:id="btnAdvanced" toggleGroup="$functionGroup"
+                         onAction="#handleFunctionSelect"
+                         style="-fx-pref-width: 150px;"/>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane fx:id="contentPane">
+            <VBox fx:id="generatePane" spacing="20" style="-fx-padding: 20;">
+                <HBox spacing="20">
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="内容类型:" style="-fx-font-weight: bold;"/>
+                        <ComboBox fx:id="contentTypeCombo" prefWidth="200">
+                            <items>
+                                <String fx:value="文本"/>
+                                <String fx:value="网址"/>
+                                <String fx:value="名片"/>
+                                <String fx:value="WiFi"/>
+                                <String fx:value="邮件"/>
+                                <String fx:value="短信"/>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="二维码格式:" style="-fx-font-weight: bold;"/>
+                        <ComboBox fx:id="formatCombo" prefWidth="200">
+                            <items>
+                                <String fx:value="QR Code"/>
+                                <String fx:value="Data Matrix"/>
+                                <String fx:value="PDF 417"/>
+                                <String fx:value="Aztec"/>
+                            </items>
+                        </ComboBox>
+                    </VBox>
+                </HBox>
+                
+                <VBox fx:id="textContentPane" spacing="10" style="-fx-padding: 10;">
+                    <Label text="输入内容:" style="-fx-font-weight: bold;"/>
+                    <TextArea fx:id="textContentArea" prefHeight="100" wrapText="true"/>
+                </VBox>
+                
+                <VBox fx:id="urlContentPane" spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="网址信息:" style="-fx-font-weight: bold;"/>
+                    <GridPane hgap="10" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="300"/>
+                        </columnConstraints>
+                        <Label text="网址:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="urlField" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300" promptText="https://example.com"/>
+                    </GridPane>
+                </VBox>
+                
+                <VBox fx:id="businessCardPane" spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="名片信息 (vCard):" style="-fx-font-weight: bold;"/>
+                    <GridPane hgap="10" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="200"/>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="200"/>
+                        </columnConstraints>
+                        <Label text="姓名:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="bcNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        <Label text="公司:" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+                        <TextField fx:id="bcCompanyField" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+                        
+                        <Label text="职位:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="bcTitleField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        <Label text="电话:" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+                        <TextField fx:id="bcPhoneField" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+                        
+                        <Label text="手机:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="bcMobileField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        <Label text="邮箱:" GridPane.rowIndex="2" GridPane.columnIndex="2"/>
+                        <TextField fx:id="bcEmailField" GridPane.rowIndex="2" GridPane.columnIndex="3"/>
+                        
+                        <Label text="网站:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <TextField fx:id="bcWebsiteField" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                        <Label text="地址:" GridPane.rowIndex="3" GridPane.columnIndex="2"/>
+                        <TextField fx:id="bcAddressField" GridPane.rowIndex="3" GridPane.columnIndex="3"/>
+                    </GridPane>
+                </VBox>
+                
+                <VBox fx:id="wifiContentPane" spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="WiFi信息:" style="-fx-font-weight: bold;"/>
+                    <GridPane hgap="10" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="250"/>
+                        </columnConstraints>
+                        <Label text="网络名称 (SSID):" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="wifiSSIDField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="加密方式:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="wifiEncryptionCombo" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="200">
+                            <items>
+                                <String fx:value="WPA"/>
+                                <String fx:value="WPA2"/>
+                                <String fx:value="WEP"/>
+                                <String fx:value="无"/>
+                            </items>
+                        </ComboBox>
+                        
+                        <Label text="密码:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="wifiPasswordField" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                        
+                        <Label text="隐藏网络:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                        <CheckBox fx:id="wifiHiddenCheck" GridPane.rowIndex="3" GridPane.columnIndex="1" text="该网络是隐藏的"/>
+                    </GridPane>
+                </VBox>
+                
+                <VBox fx:id="emailContentPane" spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="邮件信息:" style="-fx-font-weight: bold;"/>
+                    <GridPane hgap="10" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="300"/>
+                        </columnConstraints>
+                        <Label text="收件人:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="emailToField" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="example@email.com"/>
+                        
+                        <Label text="主题:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="emailSubjectField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="正文:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="emailBodyArea" GridPane.rowIndex="2" GridPane.columnIndex="1" prefHeight="60"/>
+                    </GridPane>
+                </VBox>
+                
+                <VBox fx:id="smsContentPane" spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="短信信息:" style="-fx-font-weight: bold;"/>
+                    <GridPane hgap="10" vgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="80"/>
+                            <ColumnConstraints prefWidth="300"/>
+                        </columnConstraints>
+                        <Label text="手机号码:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="smsPhoneField" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="13800138000"/>
+                        
+                        <Label text="消息内容:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextArea fx:id="smsContentArea" GridPane.rowIndex="1" GridPane.columnIndex="1" prefHeight="60"/>
+                    </GridPane>
+                </VBox>
+                
+                <TitledPane text="样式设置" expanded="false">
+                    <VBox spacing="15" style="-fx-padding: 10;">
+                        <HBox spacing="20">
+                            <VBox spacing="5">
+                                <Label text="大小:"/>
+                                <Slider fx:id="sizeSlider" min="100" max="1000" value="300" majorTickUnit="100" showTickLabels="true" showTickMarks="true" prefWidth="200"/>
+                                <Label fx:id="sizeLabel" text="300 x 300"/>
+                            </VBox>
+                            <VBox spacing="5">
+                                <Label text="边距:"/>
+                                <Slider fx:id="marginSlider" min="0" max="50" value="10" majorTickUnit="10" showTickLabels="true" showTickMarks="true" prefWidth="150"/>
+                            </VBox>
+                        </HBox>
+                        
+                        <HBox spacing="20">
+                            <VBox spacing="5">
+                                <Label text="前景色:"/>
+                                <ColorPicker fx:id="foregroundColorPicker" value="BLACK"/>
+                            </VBox>
+                            <VBox spacing="5">
+                                <Label text="背景色:"/>
+                                <ColorPicker fx:id="backgroundColorPicker" value="WHITE"/>
+                            </VBox>
+                            <VBox spacing="5">
+                                <Label text="纠错级别:"/>
+                                <ComboBox fx:id="errorLevelCombo">
+                                    <items>
+                                        <String fx:value="低 (7%)"/>
+                                        <String fx:value="中 (15%)"/>
+                                        <String fx:value="较高 (25%)"/>
+                                        <String fx:value="高 (30%)"/>
+                                    </items>
+                                </ComboBox>
+                            </VBox>
+                        </HBox>
+                        
+                        <VBox spacing="5">
+                            <Label text="Logo嵌入:"/>
+                            <HBox spacing="10">
+                                <TextField fx:id="logoPathField" editable="false" prefWidth="300" promptText="选择Logo图片..."/>
+                                <Button fx:id="btnSelectLogo" text="浏览..." onAction="#handleSelectLogo"/>
+                                <CheckBox fx:id="enableLogoCheck" text="启用Logo"/>
+                            </HBox>
+                        </VBox>
+                        
+                        <VBox spacing="5">
+                            <Label text="边框设置:"/>
+                            <HBox spacing="10">
+                                <CheckBox fx:id="enableBorderCheck" text="启用边框"/>
+                                <Label text="宽度:"/>
+                                <Spinner fx:id="borderWidthSpinner" min="0" max="50" value="0"/>
+                                <Label text="颜色:"/>
+                                <ColorPicker fx:id="borderColorPicker" value="BLACK"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                </TitledPane>
+                
+                <HBox spacing="10" style="-fx-padding: 10;">
+                    <Button fx:id="btnGenerateQR" text="生成二维码" onAction="#handleGenerateQRCode" 
+                           style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px;"/>
+                    <Button fx:id="btnSaveQR" text="保存图片" onAction="#handleSaveQRCode" disable="true"/>
+                    <Button fx:id="btnPreview" text="预览" onAction="#handlePreview" disable="true"/>
+                </HBox>
+            </VBox>
+            
+            <VBox fx:id="recognizePane" spacing="20" style="-fx-padding: 20;">
+                <Label text="二维码识别" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                
+                <HBox spacing="20">
+                    <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;">
+                        <Label text="预览区域" style="-fx-font-weight: bold;"/>
+                        <ImageView fx:id="qrImageView" fitWidth="300" fitHeight="300" preserveRatio="true"/>
+                    </VBox>
+                    
+                    <VBox spacing="10" style="-fx-padding: 10;">
+                        <Label text="识别结果" style="-fx-font-weight: bold;"/>
+                        <TextArea fx:id="resultArea" prefWidth="400" prefHeight="300" editable="false" wrapText="true"/>
+                        
+                        <HBox spacing="10">
+                            <Button fx:id="btnCopyResult" text="复制结果" onAction="#handleCopyResult" disable="true"/>
+                            <Button fx:id="btnSaveResult" text="保存结果" onAction="#handleSaveResult" disable="true"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="选择识别方式:" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="10">
+                        <Button fx:id="btnSelectImage" text="选择图片文件" onAction="#handleSelectImageToRecognize"/>
+                        <Button fx:id="btnPasteFromClipboard" text="从剪贴板粘贴" onAction="#handlePasteFromClipboard"/>
+                        <Button fx:id="btnClear" text="清除" onAction="#handleClearRecognize"/>
+                    </HBox>
+                </VBox>
+                
+                <VBox spacing="10" style="-fx-padding: 10;">
+                    <Label text="识别历史:" style="-fx-font-weight: bold;"/>
+                    <TableView fx:id="historyTable" prefHeight="150">
+                        <columns>
+                            <TableColumn text="时间" prefWidth="150">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="timestamp"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="内容" prefWidth="400">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="content"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                            <TableColumn text="操作" prefWidth="100">
+                                <cellValueFactory>
+                                    <PropertyValueFactory property="action"/>
+                                </cellValueFactory>
+                            </TableColumn>
+                        </columns>
+                    </TableView>
+                </VBox>
+            </VBox>
+            
+            <VBox fx:id="batchPane" spacing="20" style="-fx-padding: 20;">
+                <Label text="批量处理" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                
+                <TabPane>
+                    <Tab text="批量生成">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <VBox spacing="10">
+                                <Label text="数据源:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <RadioButton fx:id="rbCSV" text="CSV文件" selected="true"/>
+                                    <RadioButton fx:id="rbExcel" text="Excel文件"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="选择数据文件:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <TextField fx:id="dataFilePathField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectDataFile" text="浏览..." onAction="#handleSelectDataFile"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="输出目录:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <TextField fx:id="outputDirField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectOutputDir" text="浏览..." onAction="#handleSelectOutputDir"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <TitledPane text="样式设置" expanded="false">
+                                <VBox spacing="10" style="-fx-padding: 10;">
+                                    <HBox spacing="20">
+                                        <VBox spacing="5">
+                                            <Label text="大小:"/>
+                                            <Slider fx:id="batchSizeSlider" min="100" max="1000" value="300"/>
+                                        </VBox>
+                                        <VBox spacing="5">
+                                            <Label text="纠错级别:"/>
+                                            <ComboBox fx:id="batchErrorLevelCombo">
+                                                <items>
+                                                    <String fx:value="低"/>
+                                                    <String fx:value="中"/>
+                                                    <String fx:value="较高"/>
+                                                    <String fx:value="高"/>
+                                                </items>
+                                            </ComboBox>
+                                        </VBox>
+                                    </HBox>
+                                </VBox>
+                            </TitledPane>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="btnStartBatchGenerate" text="开始生成" onAction="#handleStartBatchGenerate"
+                                       style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                                <Label fx:id="batchGenerateStatus" text=""/>
+                            </HBox>
+                        </VBox>
+                    </Tab>
+                    
+                    <Tab text="批量识别">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <VBox spacing="10">
+                                <Label text="选择图片目录:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <TextField fx:id="imageDirField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectImageDir" text="浏览..." onAction="#handleSelectImageDir"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="输出结果:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <RadioButton fx:id="rbExportCSV" text="导出为CSV" selected="true"/>
+                                    <RadioButton fx:id="rbExportExcel" text="导出为Excel"/>
+                                </HBox>
+                                <HBox spacing="10">
+                                    <TextField fx:id="resultOutputField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectResultOutput" text="浏览..." onAction="#handleSelectResultOutput"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="btnStartBatchRecognize" text="开始识别" onAction="#handleStartBatchRecognize"
+                                       style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                                <Label fx:id="batchRecognizeStatus" text=""/>
+                            </HBox>
+                            
+                            <TableView fx:id="batchResultTable" prefHeight="200">
+                                <columns>
+                                    <TableColumn text="文件名" prefWidth="200">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="fileName"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="内容" prefWidth="400">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="content"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                    <TableColumn text="状态" prefWidth="100">
+                                        <cellValueFactory>
+                                            <PropertyValueFactory property="status"/>
+                                        </cellValueFactory>
+                                    </TableColumn>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </Tab>
+                </TabPane>
+            </VBox>
+            
+            <VBox fx:id="managePane" spacing="20" style="-fx-padding: 20;">
+                <Label text="二维码管理" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                
+                <HBox spacing="20">
+                    <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;" prefWidth="200">
+                        <Label text="分类管理" style="-fx-font-weight: bold;"/>
+                        <ListView fx:id="categoryList" prefHeight="300">
+                            <items>
+                                <String fx:value="全部"/>
+                                <String fx:value="收藏"/>
+                            </items>
+                        </ListView>
+                        <HBox spacing="5">
+                            <Button fx:id="btnAddCategory" text="添加" onAction="#handleAddCategory"/>
+                            <Button fx:id="btnDeleteCategory" text="删除" onAction="#handleDeleteCategory"/>
+                        </HBox>
+                    </VBox>
+                    
+                    <VBox spacing="10" style="-fx-padding: 10;" prefWidth="700">
+                        <HBox spacing="10">
+                            <TextField fx:id="searchField" promptText="搜索二维码内容..." prefWidth="400"/>
+                            <Button fx:id="btnSearch" text="搜索" onAction="#handleSearch"/>
+                            <Button fx:id="btnRefresh" text="刷新" onAction="#handleRefreshManage"/>
+                        </HBox>
+                        
+                        <TableView fx:id="qrCodeTable" prefHeight="400">
+                            <columns>
+                                <TableColumn text="ID" prefWidth="50">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="id"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="内容" prefWidth="300">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="content"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="类型" prefWidth="100">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="type"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="分类" prefWidth="100">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="category"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn text="创建时间" prefWidth="150">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="createTime"/>
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                        
+                        <HBox spacing="10">
+                            <Button fx:id="btnViewQR" text="查看详情" onAction="#handleViewQR"/>
+                            <Button fx:id="btnAddToFavorite" text="加入收藏" onAction="#handleAddToFavorite"/>
+                            <Button fx:id="btnAssignCategory" text="分配分类" onAction="#handleAssignCategory"/>
+                            <Button fx:id="btnDeleteQR" text="删除" onAction="#handleDeleteQR"/>
+                        </HBox>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                    <Label text="统计信息" style="-fx-font-weight: bold;"/>
+                    <HBox spacing="40">
+                        <Label fx:id="totalCountLabel" text="总数: 0"/>
+                        <Label fx:id="favoriteCountLabel" text="收藏: 0"/>
+                        <Label fx:id="categoryCountLabel" text="分类数: 0"/>
+                    </HBox>
+                </VBox>
+            </VBox>
+            
+            <VBox fx:id="advancedPane" spacing="20" style="-fx-padding: 20;">
+                <Label text="高级功能" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                
+                <TabPane>
+                    <Tab text="加密">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <VBox spacing="10">
+                                <Label text="选择加密方式:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <RadioButton fx:id="rbEncryptContent" text="加密内容后生成二维码" selected="true"/>
+                                    <RadioButton fx:id="rbEncryptExisting" text="加密现有二维码图片"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox fx:id="encryptContentPane" spacing="10">
+                                <Label text="输入要加密的内容:" style="-fx-font-weight: bold;"/>
+                                <TextArea fx:id="encryptContentArea" prefHeight="100"/>
+                                
+                                <Label text="设置密码:" style="-fx-font-weight: bold;"/>
+                                <GridPane hgap="10" vgap="10">
+                                    <columnConstraints>
+                                        <ColumnConstraints prefWidth="100"/>
+                                        <ColumnConstraints prefWidth="200"/>
+                                    </columnConstraints>
+                                    <Label text="密码:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <PasswordField fx:id="encryptPasswordField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                                    <Label text="确认密码:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <PasswordField fx:id="encryptConfirmPasswordField" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                </GridPane>
+                                
+                                <HBox spacing="10">
+                                    <Button fx:id="btnEncryptGenerate" text="加密并生成二维码" onAction="#handleEncryptGenerate"
+                                           style="-fx-background-color: #9C27B0; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <ImageView fx:id="encryptedQRPreview" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+                        </VBox>
+                    </Tab>
+                    
+                    <Tab text="解密">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <VBox spacing="10">
+                                <Label text="选择解密方式:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <RadioButton fx:id="rbDecryptImage" text="从图片解密" selected="true"/>
+                                    <RadioButton fx:id="rbDecryptContent" text="输入加密内容解密"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox fx:id="decryptImagePane" spacing="10">
+                                <Label text="选择二维码图片:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <TextField fx:id="decryptImagePathField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectDecryptImage" text="浏览..." onAction="#handleSelectDecryptImage"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <VBox fx:id="decryptContentPane" spacing="10" visible="false">
+                                <Label text="输入加密内容:" style="-fx-font-weight: bold;"/>
+                                <TextArea fx:id="decryptContentArea" prefHeight="100"/>
+                            </VBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="输入密码:" style="-fx-font-weight: bold;"/>
+                                <PasswordField fx:id="decryptPasswordField" prefWidth="200"/>
+                            </VBox>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="btnDecrypt" text="解密" onAction="#handleDecrypt"
+                                       style="-fx-background-color: #673AB7; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </HBox>
+                            
+                            <VBox spacing="10">
+                                <Label text="解密结果:" style="-fx-font-weight: bold;"/>
+                                <TextArea fx:id="decryptResultArea" prefHeight="150" editable="false"/>
+                            </VBox>
+                        </VBox>
+                    </Tab>
+                    
+                    <Tab text="修复">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <VBox spacing="10">
+                                <Label text="选择要修复的二维码图片:" style="-fx-font-weight: bold;"/>
+                                <HBox spacing="10">
+                                    <TextField fx:id="repairImagePathField" editable="false" prefWidth="400"/>
+                                    <Button fx:id="btnSelectRepairImage" text="浏览..." onAction="#handleSelectRepairImage"/>
+                                </HBox>
+                            </VBox>
+                            
+                            <HBox spacing="40">
+                                <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;">
+                                    <Label text="原始图片" style="-fx-font-weight: bold;"/>
+                                    <ImageView fx:id="originalRepairImageView" fitWidth="250" fitHeight="250" preserveRatio="true"/>
+                                </VBox>
+                                
+                                <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;">
+                                    <Label text="修复后图片" style="-fx-font-weight: bold;"/>
+                                    <ImageView fx:id="repairedImageView" fitWidth="250" fitHeight="250" preserveRatio="true"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="btnRepair" text="修复二维码" onAction="#handleRepair"
+                                       style="-fx-background-color: #FF9800; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                                <Button fx:id="btnSaveRepaired" text="保存修复结果" onAction="#handleSaveRepaired" disable="true"/>
+                            </HBox>
+                        </VBox>
+                    </Tab>
+                    
+                    <Tab text="对比">
+                        <VBox spacing="20" style="-fx-padding: 20;">
+                            <HBox spacing="40">
+                                <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;">
+                                    <Label text="二维码1" style="-fx-font-weight: bold;"/>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="comparePath1Field" editable="false" prefWidth="200"/>
+                                        <Button fx:id="btnSelectCompare1" text="浏览..." onAction="#handleSelectCompare1"/>
+                                    </HBox>
+                                    <ImageView fx:id="compareImageView1" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+                                </VBox>
+                                
+                                <VBox spacing="10" style="-fx-padding: 10; -fx-border-color: #ddd; -fx-border-width: 1;">
+                                    <Label text="二维码2" style="-fx-font-weight: bold;"/>
+                                    <HBox spacing="10">
+                                        <TextField fx:id="comparePath2Field" editable="false" prefWidth="200"/>
+                                        <Button fx:id="btnSelectCompare2" text="浏览..." onAction="#handleSelectCompare2"/>
+                                    </HBox>
+                                    <ImageView fx:id="compareImageView2" fitWidth="200" fitHeight="200" preserveRatio="true"/>
+                                </VBox>
+                            </HBox>
+                            
+                            <HBox spacing="10">
+                                <Button fx:id="btnCompare" text="开始对比" onAction="#handleCompare"
+                                       style="-fx-background-color: #00BCD4; -fx-text-fill: white; -fx-font-weight: bold;"/>
+                            </HBox>
+                            
+                            <VBox spacing="10" style="-fx-padding: 10; -fx-background-color: #f9f9f9;">
+                                <Label text="对比结果:" style="-fx-font-weight: bold;"/>
+                                <GridPane hgap="10" vgap="10">
+                                    <columnConstraints>
+                                        <ColumnConstraints prefWidth="100"/>
+                                        <ColumnConstraints prefWidth="300"/>
+                                    </columnConstraints>
+                                    <Label text="是否相同:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                                    <Label fx:id="compareIdenticalLabel" text="-" GridPane.rowIndex="0" GridPane.columnIndex="1" style="-fx-font-weight: bold;"/>
+                                    
+                                    <Label text="相似度:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                                    <Label fx:id="compareSimilarityLabel" text="-" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="二维码1内容:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                                    <Label fx:id="compareContent1Label" text="-" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    
+                                    <Label text="二维码2内容:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                                    <Label fx:id="compareContent2Label" text="-" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                                </GridPane>
+                            </VBox>
+                        </VBox>
+                    </Tab>
+                </TabPane>
+            </VBox>
+        </StackPane>
+    </center>
+    
+    <bottom>
+        <StatusBar>
+            <leftItems>
+                <Label fx:id="statusLabel" text="就绪"/>
+            </leftItems>
+            <rightItems>
+                <ProgressBar fx:id="progressBar" visible="false"/>
+            </rightItems>
+        </StatusBar>
+    </bottom>
+</BorderPane>

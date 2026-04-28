@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.notetaking.ui.MainController">
+    <top>
+        <MenuBar>
+            <Menu mnemonicParsing="false" text="文件">
+                <MenuItem fx:id="newNoteMenuItem" mnemonicParsing="false" onAction="#handleNewNote" text="新建笔记"/>
+                <MenuItem fx:id="saveNoteMenuItem" mnemonicParsing="false" onAction="#handleSaveNote" text="保存"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <Menu mnemonicParsing="false" text="导出">
+                    <MenuItem fx:id="exportPdfMenuItem" mnemonicParsing="false" onAction="#handleExportPdf" text="导出为PDF"/>
+                    <MenuItem fx:id="exportHtmlMenuItem" mnemonicParsing="false" onAction="#handleExportHtml" text="导出为HTML"/>
+                    <MenuItem fx:id="exportWordMenuItem" mnemonicParsing="false" onAction="#handleExportWord" text="导出为Word"/>
+                    <MenuItem mnemonicParsing="false" onAction="#handleExportMarkdown" text="导出为Markdown"/>
+                </Menu>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem mnemonicParsing="false" onAction="#handleExit" text="退出"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="编辑">
+                <MenuItem mnemonicParsing="false" onAction="#handleToggleFavorite" text="切换收藏"/>
+                <SeparatorMenuItem mnemonicParsing="false"/>
+                <MenuItem mnemonicParsing="false" onAction="#handleDeleteNote" text="删除笔记"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="视图">
+                <MenuItem mnemonicParsing="false" text="显示统计" onAction="#handleShowStatistics"/>
+            </Menu>
+            <Menu mnemonicParsing="false" text="帮助">
+                <MenuItem mnemonicParsing="false" onAction="#handleAbout" text="关于"/>
+            </Menu>
+        </MenuBar>
+    </top>
+    <left>
+        <VBox fx:id="leftPanel" minWidth="250.0" prefWidth="280.0" style="-fx-background-color: #f5f5f5;">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="5.0">
+                    <children>
+                        <Label style="-fx-font-weight: bold; -fx-font-size: 13px;" text="搜索"/>
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </HBox>
+                <ComboBox fx:id="searchHistoryComboBox" editable="true" promptText="搜索笔记...">
+                    <VBox.margin>
+                        <Insets bottom="10.0"/>
+                    </VBox.margin>
+                </ComboBox>
+                <Label style="-fx-font-weight: bold; -fx-font-size: 13px;" text="笔记本">
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </Label>
+                <TreeView fx:id="notebookTreeView" prefHeight="150.0">
+                    <VBox.margin>
+                        <Insets bottom="10.0"/>
+                    </VBox.margin>
+                </TreeView>
+                <Label style="-fx-font-weight: bold; -fx-font-size: 13px;" text="标签">
+                    <VBox.margin>
+                        <Insets bottom="5.0"/>
+                    </VBox.margin>
+                </Label>
+                <ListView fx:id="tagListView" prefHeight="100.0">
+                    <VBox.vgrow>
+                        <Priority>ALWAYS</Priority>
+                    </VBox.vgrow>
+                </ListView>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <SplitPane fx:id="mainSplitPane" dividerPositions="0.3">
+            <items>
+                <VBox minWidth="200.0" prefWidth="300.0">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label style="-fx-font-weight: bold; -fx-font-size: 13px;" text="笔记列表"/>
+                                <Pane HBox.hgrow="ALWAYS"/>
+                                <Button mnemonicParsing="false" onAction="#handleNewNote" text="新建" style="-fx-background-color: #4a90d9; -fx-text-fill: white;"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="5.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <ListView fx:id="noteListView">
+                            <VBox.vgrow>
+                                <Priority>ALWAYS</Priority>
+                            </VBox.vgrow>
+                        </ListView>
+                    </children>
+                </VBox>
+                <VBox fx:id="editorArea">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                    </padding>
+                    <children>
+                        <HBox alignment="CENTER_LEFT" spacing="10.0">
+                            <children>
+                                <Label style="-fx-font-weight: bold;" text="标题"/>
+                                <TextField fx:id="noteTitleField" promptText="笔记标题" HBox.hgrow="ALWAYS">
+                                    <HBox.margin>
+                                        <Insets left="10.0" right="10.0"/>
+                                    </HBox.margin>
+                                </TextField>
+                                <Button mnemonicParsing="false" onAction="#handleSaveNote" text="保存"/>
+                                <Button mnemonicParsing="false" onAction="#handleToggleFavorite" text="收藏"/>
+                            </children>
+                            <VBox.margin>
+                                <Insets bottom="10.0"/>
+                            </VBox.margin>
+                        </HBox>
+                        <SplitPane fx:id="editorSplitPane" dividerPositions="0.5">
+                            <items>
+                                <VBox>
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 12px;" text="Markdown编辑器">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                        <TextArea fx:id="markdownTextArea" prefRowCount="10" wrapText="true">
+                                            <VBox.vgrow>
+                                                <Priority>ALWAYS</Priority>
+                                            </VBox.vgrow>
+                                        </TextArea>
+                                    </children>
+                                </VBox>
+                                <VBox fx:id="previewArea">
+                                    <children>
+                                        <Label style="-fx-font-weight: bold; -fx-font-size: 12px;" text="预览">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                        <WebView fx:id="previewWebView" prefHeight="200.0" prefWidth="200.0">
+                                            <VBox.vgrow>
+                                                <Priority>ALWAYS</Priority>
+                                            </VBox.vgrow>
+                                        </WebView>
+                                    </children>
+                                </VBox>
+                            </items>
+                            <VBox.vgrow>
+                                <Priority>ALWAYS</Priority>
+                            </VBox.vgrow>
+                        </SplitPane>
+                    </children>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_LEFT" style="-fx-background-color: #e0e0e0;" spacing="20.0">
+            <padding>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
+            </padding>
+            <children>
+                <Label fx:id="statusLabel" text="就绪"/>
+                <Pane HBox.hgrow="ALWAYS"/>
+                <Label fx:id="wordCountLabel" text="0 字"/>
+            </children>
+        </HBox>
+    </bottom>
+</BorderPane>

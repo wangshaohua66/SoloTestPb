@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to bottom right, #2c3e50, #1a252f);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passwordmanager.controller.LoginController">
+    <children>
+        <VBox alignment="CENTER" layoutX="150.0" layoutY="50.0" prefHeight="300.0" prefWidth="300.0" spacing="20.0">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #3498db; -fx-font-size: 60;" text="🔒">
+                    <font>
+                        <Font name="System" size="60.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                    <text>密码管理器</text>
+                </Label>
+                <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #bdc3c7;" text="请设置主密码" textAlignment="CENTER">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </Label>
+                <VBox fx:id="setupPasswordVBox" spacing="10.0">
+                    <children>
+                        <PasswordField fx:id="setupPasswordField" promptText="输入主密码" prefHeight="40.0" style="-fx-background-radius: 5;" />
+                        <PasswordField fx:id="confirmPasswordField" promptText="确认主密码" prefHeight="40.0" style="-fx-background-radius: 5;" />
+                    </children>
+                </VBox>
+                <VBox fx:id="loginPasswordVBox" spacing="10.0" visible="false">
+                    <children>
+                        <PasswordField fx:id="masterPasswordField" onAction="#handleLogin" promptText="输入主密码" prefHeight="40.0" style="-fx-background-radius: 5;" />
+                    </children>
+                </VBox>
+                <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" style="-fx-text-fill: #e74c3c;" text="" textAlignment="CENTER" wrapText="true">
+                    <font>
+                        <Font name="System" size="12.0" />
+                    </font>
+                </Label>
+                <Button fx:id="loginButton" maxWidth="200.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="40.0" style="-fx-background-color: #3498db; -fx-background-radius: 5; -fx-text-fill: white;">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets top="10.0" />
+                    </VBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="20.0" right="20.0" />
+            </padding>
+        </VBox>
+        <Label alignment="CENTER" layoutX="0.0" layoutY="360.0" prefHeight="40.0" prefWidth="600.0" style="-fx-text-fill: #95a5a6;" text="© 2024 密码管理器 - 所有数据本地加密存储">
+            <font>
+                <Font name="System" size="12.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
