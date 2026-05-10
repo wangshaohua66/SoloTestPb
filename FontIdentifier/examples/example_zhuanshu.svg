@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 220" width="160" height="220">
+  <rect width="160" height="220" fill="#faf6f0"/>
+  <g stroke="#2c2416" stroke-width="3" stroke-linecap="round" fill="none">
+    <ellipse cx="80" cy="50" rx="40" ry="15" stroke-width="3"/>
+    <path d="M 40 50 Q 35 120 40 190" stroke-width="3"/>
+    <path d="M 120 50 Q 125 120 120 190" stroke-width="3"/>
+    <ellipse cx="80" cy="120" rx="35" ry="12" stroke-width="3"/>
+    <path d="M 80 60 Q 80 110 80 180" stroke-width="3"/>
+    <path d="M 55 120 Q 80 130 105 120" stroke-width="2"/>
+  </g>
+  <text x="80" y="210" text-anchor="middle" font-family="serif" font-size="10" fill="#666">
+    篆书示例 - 圆润对称
+  </text>
+</svg>

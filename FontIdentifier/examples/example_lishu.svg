@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" width="240" height="180">
+  <rect width="240" height="180" fill="#faf6f0"/>
+  <g stroke="#2c2416" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M 20 40 Q 25 35 30 40 L 200 40 Q 210 45 220 40" stroke-width="5"/>
+    <path d="M 60 35 L 60 120" stroke-width="4"/>
+    <path d="M 180 35 L 180 120" stroke-width="4"/>
+    <path d="M 40 70 Q 45 65 50 70 L 190 70 Q 200 75 210 70" stroke-width="4"/>
+    <path d="M 30 100 Q 35 95 40 100 L 200 100 Q 210 105 220 100" stroke-width="4"/>
+    <path d="M 120 70 L 120 100" stroke-width="3"/>
+  </g>
+  <text x="120" y="165" text-anchor="middle" font-family="serif" font-size="10" fill="#666">
+    隶书示例 - 扁方波磔
+  </text>
+</svg>
