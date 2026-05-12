@@ -1,0 +1,15 @@
+开始处理: /private/var/folders/1w/19lsd5ds515dvlbt4fr42lqm0000gq/T/pytest-of-paul/pytest-3/test_main_success0/input -> /private/var/folders/1w/19lsd5ds515dvlbt4fr42lqm0000gq/T/pytest-of-paul/pytest-3/test_main_success0/output
+------------------------------------------------------------
+[1/3] ✓ test_1.jpg (+87.8%) - 0.01s
+[2/3] ✓ test_0.jpg (+87.8%) - 0.01s
+[3/3] ✓ test_2.jpg (+87.8%) - 0.01s
+
+============================================================
+处理完成
+============================================================
+总文件数: 3
+成功: 3
+失败: 0
+成功率: 100.0%
+总耗时: 0.02 秒
+平均耗时: 0.01 秒/张

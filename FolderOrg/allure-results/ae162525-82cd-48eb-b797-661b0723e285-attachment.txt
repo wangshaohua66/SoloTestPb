@@ -1,0 +1,10 @@
+[32mINFO    [0m FolderOrganizer:logger.py:98 ==================================================
+[32mINFO    [0m FolderOrganizer:logger.py:98 文件整理完成
+[32mINFO    [0m FolderOrganizer:logger.py:98 总文件数: 10
+[32mINFO    [0m FolderOrganizer:logger.py:98 成功移动: 8
+[32mINFO    [0m FolderOrganizer:logger.py:98 移动失败: 2
+[32mINFO    [0m FolderOrganizer:logger.py:98 耗时: 0.50秒
+[32mINFO    [0m FolderOrganizer:logger.py:98 分类统计:
+[32mINFO    [0m FolderOrganizer:logger.py:98   - documents: 5个文件
+[32mINFO    [0m FolderOrganizer:logger.py:98   - images: 3个文件
+[32mINFO    [0m FolderOrganizer:logger.py:98 ==================================================
