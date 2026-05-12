@@ -1,0 +1,4 @@
+Pillow==10.4.0
+pytest==8.3.2
+allure-pytest==2.13.5
+coverage==7.6.1

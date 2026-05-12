@@ -1,0 +1,28 @@
+Metadata-Version: 2.4
+Name: img-resize
+Version: 1.0.0
+Summary: 图片批量压缩调整工具
+Author: ImgResize
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Programming Language :: Python :: 3.12
+Classifier: Topic :: Multimedia :: Graphics :: Graphics Conversion
+Requires-Python: >=3.8
+Requires-Dist: Pillow==10.4.0
+Requires-Dist: pytest==8.3.2
+Requires-Dist: allure-pytest==2.13.5
+Requires-Dist: coverage==7.6.1
+Dynamic: author
+Dynamic: classifier
+Dynamic: description
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+支持批量调整图片尺寸、压缩、格式转换、添加水印等功能的自动化工具

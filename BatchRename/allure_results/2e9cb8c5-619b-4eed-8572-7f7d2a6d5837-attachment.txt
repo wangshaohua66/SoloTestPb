@@ -1,0 +1,44 @@
+usage: batch_rename [-h] [--undo]
+                    [--mode {sequence,timestamp,replace,prefix,suffix,regex}]
+                    [--preview] [--force] [--name NAME] [--start START]
+                    [--padding PADDING] [--format FORMAT] [--find FIND]
+                    [--replace REPLACE] [--prefix PREFIX] [--suffix SUFFIX]
+                    [--pattern PATTERN] [--ext [EXT ...]]
+                    directory
+
+批量文件重命名工具
+
+positional arguments:
+  directory             文件所在目录
+
+options:
+  -h, --help            show this help message and exit
+  --undo                撤销上次批量重命名操作
+  --mode {sequence,timestamp,replace,prefix,suffix,regex}
+                        重命名模式
+  --preview             预览模式，不实际执行重命名
+  --force               强制执行模式，跳过交互式确认，适用于自动化脚本
+  --name NAME           序列模式的基础名称
+  --start START         起始序号，默认为1
+  --padding PADDING     序号填充位数，默认为3
+  --format FORMAT       日期时间格式，默认为%Y%m%d_%H%M%S
+  --find FIND           要查找的字符串
+  --replace REPLACE     替换的字符串
+  --prefix PREFIX       要添加的前缀
+  --suffix SUFFIX       要添加的后缀
+  --pattern PATTERN     正则表达式匹配模式
+  --ext [EXT ...]       只处理指定扩展名的文件，如 --ext .jpg .png
+
+示例:
+  # 按序号重命名
+  python -m batch_rename /path/to/files --mode sequence --name "photo"
+  
+  # 添加前缀
+  python -m batch_rename /path/to/files --mode prefix --prefix "2024_"
+  
+  # 预览模式
+  python -m batch_rename /path/to/files --mode sequence --name "file" --preview
+  
+  # 撤销上次操作
+  python -m batch_rename /path/to/files --undo
+        

@@ -1,0 +1,1 @@
+[33mWARNING [0m img_resize.batch_processor:batch_processor.py:275 没有找到可处理的图片文件

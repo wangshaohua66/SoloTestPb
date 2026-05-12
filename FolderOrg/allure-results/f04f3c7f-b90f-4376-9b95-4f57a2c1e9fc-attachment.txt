@@ -1,0 +1,5 @@
+[35mDEBUG   [0m FolderOrganizer:logger.py:108 debug message
+[32mINFO    [0m FolderOrganizer:logger.py:98 info message
+[33mWARNING [0m FolderOrganizer:logger.py:118 warning message
+[1m[31mERROR   [0m FolderOrganizer:logger.py:128 error message
+[31mCRITICAL[0m FolderOrganizer:logger.py:138 critical message
