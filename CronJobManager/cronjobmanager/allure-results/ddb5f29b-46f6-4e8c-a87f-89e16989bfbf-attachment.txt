@@ -1,0 +1,8 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: d7a720eb-46d2-43a1-924f-35e493e9769c (任务0)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 任务0 (d7a720eb-46d2-43a1-924f-35e493e9769c)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 1aabe7da-f817-4301-80ba-156f1c98ef4d (任务1)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 任务1 (1aabe7da-f817-4301-80ba-156f1c98ef4d)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: d3ff58af-7b26-48d0-aa36-bb44a2b78423 (任务2)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 任务2 (d3ff58af-7b26-48d0-aa36-bb44a2b78423)
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

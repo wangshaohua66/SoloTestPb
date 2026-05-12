@@ -1,0 +1,17 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: aa2a816c-6982-48b9-b921-e93a065b30b1 (日志测试任务)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 日志测试任务 (aa2a816c-6982-48b9-b921-e93a065b30b1)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "日志测试任务 (trigger: date[2026-05-11 14:02:30 CST], next run at: 2026-05-11 14:02:30 CST)" was missed by 7:00:00.042431
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+ERROR    core.scheduler:scheduler.py:364 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+ERROR    core.scheduler:scheduler.py:364 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+WARNING  core.scheduler:scheduler.py:358 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+ERROR    core.scheduler:scheduler.py:364 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

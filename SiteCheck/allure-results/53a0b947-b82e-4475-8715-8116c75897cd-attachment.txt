@@ -1,0 +1,1 @@
+[33mWARNING [0m src.notifier:notifier.py:78 邮件收件人列表为空，跳过发送

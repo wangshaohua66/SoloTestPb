@@ -1,0 +1,1 @@
+{"uuid": "52e6f091-e2ed-4c64-b931-2d466a417400", "children": ["ef812f13-ef39-4b5d-96a3-479e966ff64e"], "befores": [{"name": "sample_df_with_missing", "status": "passed", "start": 1778557476205, "stop": 1778557476206}], "start": 1778557476205, "stop": 1778557476214}

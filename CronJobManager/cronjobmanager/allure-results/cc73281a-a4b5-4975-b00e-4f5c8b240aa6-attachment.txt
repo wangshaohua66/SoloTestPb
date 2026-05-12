@@ -1,0 +1,4 @@
+2026-05-11 21:38:46,266 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:46,268 - core.services.task_service - INFO - 任务创建成功: 6b815f30-6833-426a-a18d-8ccdfeade6c4 (测试Interval任务)
+2026-05-11 21:38:46,268 - core.scheduler - INFO - 任务已注册: 测试Interval任务 (6b815f30-6833-426a-a18d-8ccdfeade6c4)
+2026-05-11 21:38:46,270 - core.scheduler - INFO - 任务调度器已停止

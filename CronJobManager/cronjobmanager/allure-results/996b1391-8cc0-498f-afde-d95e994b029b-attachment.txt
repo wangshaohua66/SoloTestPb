@@ -1,0 +1,4 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: b53cc326-3187-4bd4-a216-a95da31da9f2 (测试Cron任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 测试Cron任务 (b53cc326-3187-4bd4-a216-a95da31da9f2)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

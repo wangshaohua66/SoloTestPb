@@ -1,0 +1,1 @@
+[32mINFO    [0m src.notifier:notifier.py:278 已配置 1 个通知渠道

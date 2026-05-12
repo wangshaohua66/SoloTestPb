@@ -1,0 +1,3 @@
+2026-05-11 21:22:25,984 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:22:25,984 - core.scheduler - WARNING - 调度器已经在运行中
+2026-05-11 21:22:25,985 - core.scheduler - INFO - 任务调度器已停止

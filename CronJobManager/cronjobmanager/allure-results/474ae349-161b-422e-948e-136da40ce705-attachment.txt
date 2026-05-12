@@ -1,0 +1,2 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 6ae77b06-7533-48fa-aa24-eb25c9b03ea6 (要删除的任务)
+INFO     core.services.task_service:task_service.py:228 任务删除成功: 6ae77b06-7533-48fa-aa24-eb25c9b03ea6

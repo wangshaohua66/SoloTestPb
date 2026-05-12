@@ -1,0 +1,5 @@
+[32mINFO    [0m src.scheduler:scheduler.py:93 正在启动网站健康检测调度器...
+[32mINFO    [0m src.scheduler:scheduler.py:110 已添加任务: 测试站点1, 检测间隔: 60秒, 优先级: 1
+[32mINFO    [0m src.scheduler:scheduler.py:122 已添加报告生成任务, 生成间隔: 86400秒
+[32mINFO    [0m src.scheduler:scheduler.py:126 网站健康检测调度器已成功启动
+[32mINFO    [0m src.scheduler:scheduler.py:58 开始检测站点: 测试站点1

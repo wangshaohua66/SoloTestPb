@@ -1,0 +1,4 @@
+2026-05-11 21:20:01,190 - core.services.task_service - INFO - 任务创建成功: 4cd812f8-8f69-4610-94b0-04d660a0aa26 (任务A)
+2026-05-11 21:20:01,191 - core.services.task_service - INFO - 任务创建成功: ba431e82-b43c-4a1e-b511-31da228a0e71 (任务B)
+2026-05-11 21:20:01,192 - core.services.dependency_service - INFO - 添加依赖关系: 4cd812f8-8f69-4610-94b0-04d660a0aa26 -> ba431e82-b43c-4a1e-b511-31da228a0e71
+2026-05-11 21:20:01,194 - core.services.dependency_service - INFO - 删除依赖关系: 5be0e153-f2de-498c-a7da-e338a38bc708

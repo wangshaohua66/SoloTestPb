@@ -1,0 +1,6 @@
+2026-05-11 21:38:42,099 - core.services.task_service - INFO - 任务创建成功: 8a945d4c-88f0-43a0-9300-0a46db2d5082 (任务A)
+2026-05-11 21:38:42,100 - core.services.task_service - INFO - 任务创建成功: 8f6a1beb-d4de-4aad-8f6b-ff31c179aacc (任务B)
+2026-05-11 21:38:42,101 - core.services.task_service - INFO - 任务创建成功: ef10f6f7-220d-4810-91d9-58b376499430 (任务C)
+2026-05-11 21:38:42,103 - core.services.dependency_service - INFO - 添加依赖关系: 8a945d4c-88f0-43a0-9300-0a46db2d5082 -> 8f6a1beb-d4de-4aad-8f6b-ff31c179aacc
+2026-05-11 21:38:42,103 - core.services.dependency_service - INFO - 添加依赖关系: ef10f6f7-220d-4810-91d9-58b376499430 -> 8a945d4c-88f0-43a0-9300-0a46db2d5082
+2026-05-11 21:38:42,105 - core.services.dependency_service - INFO - 删除任务 8a945d4c-88f0-43a0-9300-0a46db2d5082 的所有依赖关系，共 2 个

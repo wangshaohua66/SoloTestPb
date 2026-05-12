@@ -1,0 +1,7 @@
+2026-05-11 21:22:26,041 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:22:26,046 - core.services.task_service - INFO - 任务创建成功: 8c42fa00-b780-4c92-b255-b48834f8fa20 (任务A)
+2026-05-11 21:22:26,046 - core.scheduler - INFO - 任务已注册: 任务A (8c42fa00-b780-4c92-b255-b48834f8fa20)
+2026-05-11 21:22:26,047 - core.services.task_service - INFO - 任务创建成功: 44d0e303-c7de-4fc7-9bbc-ffe5aef5736c (任务B)
+2026-05-11 21:22:26,048 - core.services.dependency_service - INFO - 添加依赖关系: 8c42fa00-b780-4c92-b255-b48834f8fa20 -> 44d0e303-c7de-4fc7-9bbc-ffe5aef5736c
+2026-05-11 21:22:26,049 - core.scheduler - INFO - 任务已注册: 任务B (44d0e303-c7de-4fc7-9bbc-ffe5aef5736c)
+2026-05-11 21:22:26,050 - core.scheduler - INFO - 任务调度器已停止

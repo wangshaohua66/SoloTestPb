@@ -1,0 +1,5 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 9e94e2e9-8203-42f4-bf0c-05688c431e88 (测试Date任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 测试Date任务 (9e94e2e9-8203-42f4-bf0c-05688c431e88)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "测试Date任务 (trigger: date[2026-05-11 13:27:26 CST], next run at: 2026-05-11 13:27:26 CST)" was missed by 7:55:00.002742
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

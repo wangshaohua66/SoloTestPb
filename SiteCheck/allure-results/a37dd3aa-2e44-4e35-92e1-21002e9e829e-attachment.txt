@@ -1,0 +1,2 @@
+[32mINFO    [0m src.ssl_checker:ssl_checker.py:105 开始检测SSL证书: 测试站点 (https://example.com)
+[32mINFO    [0m src.ssl_checker:ssl_checker.py:154 测试站点 SSL证书有效，剩余 59 天

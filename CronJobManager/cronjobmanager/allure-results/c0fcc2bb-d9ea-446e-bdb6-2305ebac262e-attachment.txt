@@ -1,0 +1,5 @@
+2026-05-11 21:38:44,821 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:44,844 - core.services.task_service - INFO - 任务创建成功: 56e99710-ada9-4b88-99d1-33f023d0c79b (端到端测试任务)
+2026-05-11 21:38:44,845 - core.scheduler - INFO - 任务已注册: 端到端测试任务 (56e99710-ada9-4b88-99d1-33f023d0c79b)
+2026-05-11 21:38:44,962 - core.scheduler - INFO - 任务执行成功: 端到端测试任务 (执行ID: bc215228-bf1f-48c3-9de6-a0354968d2cb, 重试次数: 0)
+2026-05-11 21:38:45,478 - core.scheduler - INFO - 任务调度器已停止

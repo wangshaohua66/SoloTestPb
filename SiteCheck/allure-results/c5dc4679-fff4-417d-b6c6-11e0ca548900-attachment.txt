@@ -1,0 +1,1 @@
+[32mINFO    [0m src.notifier:notifier.py:204 Webhook告警已发送至: https://webhook.example.com/alert

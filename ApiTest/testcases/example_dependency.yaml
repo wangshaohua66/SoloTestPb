@@ -1,0 +1,42 @@
+- id: dependency_case_1
+  name: 依赖测试用例1
+  description: 作为被依赖的用例
+  tags:
+    - dependency
+  module: example
+  enabled: true
+
+  request:
+    method: GET
+    url: https://httpbin.org/uuid
+
+  assertions:
+    - type: status_code
+      expected: 200
+
+  extract:
+    uuid_value: uuid
+
+- id: dependency_case_2
+  name: 依赖测试用例2
+  description: 依赖case_1的结果
+  tags:
+    - dependency
+  module: example
+  enabled: true
+  depends_on:
+    - dependency_case_1
+
+  request:
+    method: POST
+    url: https://httpbin.org/anything
+    json:
+      previous_uuid: ${uuid_value}
+      timestamp: ${timestamp()}
+
+  assertions:
+    - type: status_code
+      expected: 200
+    - type: json_path
+      path: json.previous_uuid
+      expected: ${uuid_value}

@@ -1,0 +1,1 @@
+INFO     core.services.alert_service:alert_service.py:108 邮件告警发送成功，收件人: ['admin@example.com', 'dev@example.com']

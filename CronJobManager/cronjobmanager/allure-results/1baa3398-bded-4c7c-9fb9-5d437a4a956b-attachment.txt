@@ -1,0 +1,3 @@
+2026-05-11 21:02:30,093 - core.services.task_service - INFO - 任务创建成功: 429cc977-cd75-4a4e-b1f7-ffaebe21eb0c (任务A)
+2026-05-11 21:02:30,095 - core.services.task_service - INFO - 任务创建成功: 1ce41e54-8386-4fdc-bc8b-3853bdcc87cf (任务B)
+2026-05-11 21:02:30,100 - core.services.dependency_service - INFO - 添加依赖关系: 429cc977-cd75-4a4e-b1f7-ffaebe21eb0c -> 1ce41e54-8386-4fdc-bc8b-3853bdcc87cf

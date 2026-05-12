@@ -1,0 +1,3 @@
+[32mINFO    [0m src.scheduler:scheduler.py:154 开始执行一次所有站点的检测
+[32mINFO    [0m src.scheduler:scheduler.py:58 开始检测站点: 测试站点1
+[32mINFO    [0m src.scheduler:scheduler.py:160 所有站点检测完成

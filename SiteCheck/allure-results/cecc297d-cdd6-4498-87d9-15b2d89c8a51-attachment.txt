@@ -1,0 +1,1 @@
+[32mINFO    [0m src.notifier:notifier.py:96 邮件告警已发送至: admin@example.com

@@ -1,0 +1,16 @@
+2026-05-11 21:02:30,946 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:02:30,968 - core.services.task_service - INFO - 任务创建成功: aa2a816c-6982-48b9-b921-e93a065b30b1 (日志测试任务)
+2026-05-11 21:02:30,988 - core.scheduler - INFO - 任务已注册: 日志测试任务 (aa2a816c-6982-48b9-b921-e93a065b30b1)
+2026-05-11 21:02:31,041 - core.scheduler - WARNING - 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+2026-05-11 21:02:36,044 - core.scheduler - WARNING - 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+2026-05-11 21:02:46,046 - core.scheduler - WARNING - 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+2026-05-11 21:03:06,053 - core.scheduler - ERROR - 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+2026-05-11 21:03:06,387 - core.scheduler - WARNING - 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+2026-05-11 21:03:11,389 - core.scheduler - WARNING - 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+2026-05-11 21:03:21,392 - core.scheduler - WARNING - 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+2026-05-11 21:03:41,394 - core.scheduler - ERROR - 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+2026-05-11 21:03:41,700 - core.scheduler - WARNING - 任务执行失败，准备重试 (1/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+2026-05-11 21:03:46,702 - core.scheduler - WARNING - 任务执行失败，准备重试 (2/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+2026-05-11 21:03:56,705 - core.scheduler - WARNING - 任务执行失败，准备重试 (3/3): 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+2026-05-11 21:04:16,709 - core.scheduler - ERROR - 任务执行失败，已达最大重试次数: 日志测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+2026-05-11 21:04:16,928 - core.scheduler - INFO - 任务调度器已停止

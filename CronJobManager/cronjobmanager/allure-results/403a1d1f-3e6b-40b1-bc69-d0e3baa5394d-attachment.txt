@@ -1,0 +1,4 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: b04bcf45-a1f7-47a0-a526-4f594ae968d7 (测试任务)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 测试任务 (b04bcf45-a1f7-47a0-a526-4f594ae968d7)
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

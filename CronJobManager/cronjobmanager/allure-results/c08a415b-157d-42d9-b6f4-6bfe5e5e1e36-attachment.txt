@@ -1,0 +1,5 @@
+2026-05-11 21:38:46,384 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:46,387 - core.services.task_service - INFO - 任务创建成功: 7b1b0b0e-2761-4ea4-8ac0-5affa0b3d22a (测试任务)
+2026-05-11 21:38:46,388 - core.scheduler - INFO - 任务已注册: 测试任务 (7b1b0b0e-2761-4ea4-8ac0-5affa0b3d22a)
+2026-05-11 21:38:46,397 - core.services.task_service - INFO - 任务删除成功: 7b1b0b0e-2761-4ea4-8ac0-5affa0b3d22a
+2026-05-11 21:38:46,399 - core.scheduler - INFO - 任务调度器已停止

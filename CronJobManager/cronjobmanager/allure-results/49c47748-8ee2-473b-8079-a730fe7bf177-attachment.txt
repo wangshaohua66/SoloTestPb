@@ -1,0 +1,1 @@
+2026-05-11 21:38:46,202 - core.services.task_service - INFO - 任务创建成功: f7829aa5-e8b9-4ce5-bdee-55a43dc54f9e (测试任务)

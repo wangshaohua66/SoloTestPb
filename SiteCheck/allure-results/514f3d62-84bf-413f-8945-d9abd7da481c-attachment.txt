@@ -1,0 +1,2 @@
+[32mINFO    [0m src.ssl_checker:ssl_checker.py:105 开始检测SSL证书: 测试站点 (http://example.com)
+[32mINFO    [0m src.ssl_checker:ssl_checker.py:118 测试站点: 非HTTPS协议，跳过SSL检测

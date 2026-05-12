@@ -1,0 +1,6 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: b828c01f-2c75-495d-9acf-9577125f2ab4 (任务A)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 7856ff70-2805-4434-ae9a-4c59266b1e37 (任务B)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 508fe73b-91f6-4ed4-ac3d-1af0527eb618 (任务C)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: b828c01f-2c75-495d-9acf-9577125f2ab4 -> 7856ff70-2805-4434-ae9a-4c59266b1e37
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: 508fe73b-91f6-4ed4-ac3d-1af0527eb618 -> b828c01f-2c75-495d-9acf-9577125f2ab4
+INFO     core.services.dependency_service:dependency_service.py:169 删除任务 b828c01f-2c75-495d-9acf-9577125f2ab4 的所有依赖关系，共 2 个

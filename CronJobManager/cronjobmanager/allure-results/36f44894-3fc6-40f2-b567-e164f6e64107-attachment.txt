@@ -1,0 +1,4 @@
+2026-05-11 21:22:25,724 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:22:25,758 - core.services.task_service - INFO - 任务创建成功: c6fdea09-9a3a-48c9-824b-79da69516a43 (启用的持久化任务)
+2026-05-11 21:22:25,758 - core.scheduler - INFO - 任务已注册: 启用的持久化任务 (c6fdea09-9a3a-48c9-824b-79da69516a43)
+2026-05-11 21:22:25,759 - core.scheduler - INFO - 任务调度器已停止

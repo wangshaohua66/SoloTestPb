@@ -1,0 +1,35 @@
+id: example_get_request
+name: GET请求示例
+description: 测试GET请求和基本断言
+tags:
+  - smoke
+  - get
+module: httpbin
+variables:
+  base_url: https://httpbin.org
+
+request:
+  method: GET
+  url: ${base_url}/get
+  params:
+    foo: bar
+    test: 123
+  headers:
+    Accept: application/json
+
+assertions:
+  - type: status_code
+    expected: 200
+    message: 状态码应为200
+
+  - type: json_path
+    path: url
+    expected: https://httpbin.org/get?foo=bar&test=123
+    message: URL应正确
+
+  - type: response_time
+    max: 5000
+    message: 响应时间应小于5秒
+
+extract:
+  request_id: headers.X-Request-ID

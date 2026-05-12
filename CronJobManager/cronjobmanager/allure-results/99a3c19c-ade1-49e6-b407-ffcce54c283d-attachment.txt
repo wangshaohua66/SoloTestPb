@@ -1,0 +1,5 @@
+2026-05-11 21:04:19,217 - core.services.task_service - INFO - 任务创建成功: c6e37cb1-6ed2-4393-abf6-3498b2c50526 (测试任务0)
+2026-05-11 21:04:19,219 - core.services.task_service - INFO - 任务创建成功: edaf3a49-58ca-4643-bb3e-a8c3d2071b0c (测试任务1)
+2026-05-11 21:04:19,220 - core.services.task_service - INFO - 任务创建成功: 7949c018-00af-4494-a8e8-6ce476729f0f (测试任务2)
+2026-05-11 21:04:19,221 - core.services.task_service - INFO - 任务创建成功: c6dc20f2-eece-4448-a1e8-3fd903aaeae8 (测试任务3)
+2026-05-11 21:04:19,222 - core.services.task_service - INFO - 任务创建成功: 9301b3ac-35f9-4f60-ad57-fda45bf63032 (测试任务4)

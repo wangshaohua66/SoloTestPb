@@ -1,0 +1,7 @@
+2026-05-11 21:38:42,860 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:42,880 - core.services.task_service - INFO - 任务创建成功: c494edbb-4cd3-4ed4-8016-62e422dd92c6 (日志测试任务)
+2026-05-11 21:38:42,903 - core.scheduler - INFO - 任务已注册: 日志测试任务 (c494edbb-4cd3-4ed4-8016-62e422dd92c6)
+2026-05-11 21:38:43,020 - core.scheduler - INFO - 任务执行成功: 日志测试任务 (执行ID: 064affcc-21ca-49ae-94ea-563042b91cc6, 重试次数: 0)
+2026-05-11 21:38:43,248 - core.scheduler - INFO - 任务执行成功: 日志测试任务 (执行ID: e9802461-caab-4c9b-9ffa-eac85a914375, 重试次数: 0)
+2026-05-11 21:38:43,487 - core.scheduler - INFO - 任务执行成功: 日志测试任务 (执行ID: fe6cf832-fe4f-440d-b8c4-53f3c2d30113, 重试次数: 0)
+2026-05-11 21:38:43,601 - core.scheduler - INFO - 任务调度器已停止

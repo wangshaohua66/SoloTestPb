@@ -1,0 +1,9 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42 (CRUD测试任务)
+INFO     core.scheduler:scheduler.py:251 任务已注册: CRUD测试任务 (bb86f1c1-71fe-47a4-a6ad-e026cecadd42)
+INFO     core.services.task_service:task_service.py:211 任务更新成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+INFO     core.scheduler:scheduler.py:471 任务已暂停: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+INFO     core.services.task_service:task_service.py:211 任务更新成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+INFO     core.scheduler:scheduler.py:496 任务已恢复: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+INFO     core.services.task_service:task_service.py:228 任务删除成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

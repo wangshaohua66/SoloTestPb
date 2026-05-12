@@ -1,0 +1,3 @@
+[32mINFO    [0m src.http_checker:http_checker.py:60 开始检测站点: 测试站点 (https://example.com)
+[32mINFO    [0m src.http_checker:http_checker.py:83 测试站点 检测成功, 状态码: 200
+[32mINFO    [0m src.http_checker:http_checker.py:115 测试站点 检测完成 - 响应时间: 0.53ms, 状态: 成功

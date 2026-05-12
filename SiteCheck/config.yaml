@@ -1,0 +1,53 @@
+sites:
+  - name: 百度
+    url: https://www.baidu.com
+    priority: 1
+    check_interval: 60
+    timeout: 10
+
+  - name: GitHub
+    url: https://github.com
+    priority: 2
+    check_interval: 120
+    timeout: 15
+
+notifications:
+  email:
+    enabled: false
+    smtp_server: smtp.example.com
+    smtp_port: 587
+    use_tls: true
+    username: your_email@example.com
+    password: your_password
+    recipients:
+      - admin@example.com
+
+  webhook:
+    enabled: false
+    url: https://webhook.example.com/alert
+    method: POST
+    headers:
+      Content-Type: application/json
+    body_template: |
+      {
+        "site_name": "{site_name}",
+        "url": "{url}",
+        "status": "{status}",
+        "message": "{message}",
+        "timestamp": "{timestamp}"
+      }
+
+ssl:
+  check_enabled: true
+  alert_days_before_expiry: 30
+
+report:
+  generate_interval: 86400
+  output_dir: ./reports
+  history_days: 7
+
+logging:
+  level: INFO
+  file: ./logs/sitecheck.log
+  max_size: 10485760
+  backup_count: 5

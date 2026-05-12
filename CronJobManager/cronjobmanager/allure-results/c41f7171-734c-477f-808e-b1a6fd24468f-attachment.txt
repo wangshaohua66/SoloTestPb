@@ -1,0 +1,8 @@
+2026-05-11 21:38:46,359 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:46,361 - core.services.task_service - INFO - 任务创建成功: d2727559-68da-41fd-b27d-598ee01b1035 (测试任务)
+2026-05-11 21:38:46,361 - core.scheduler - INFO - 任务已注册: 测试任务 (d2727559-68da-41fd-b27d-598ee01b1035)
+2026-05-11 21:38:46,365 - core.services.task_service - INFO - 任务更新成功: d2727559-68da-41fd-b27d-598ee01b1035
+2026-05-11 21:38:46,367 - core.scheduler - INFO - 任务已暂停: d2727559-68da-41fd-b27d-598ee01b1035
+2026-05-11 21:38:46,369 - core.services.task_service - INFO - 任务更新成功: d2727559-68da-41fd-b27d-598ee01b1035
+2026-05-11 21:38:46,370 - core.scheduler - INFO - 任务已恢复: d2727559-68da-41fd-b27d-598ee01b1035
+2026-05-11 21:38:46,372 - core.scheduler - INFO - 任务调度器已停止

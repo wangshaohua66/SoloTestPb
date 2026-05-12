@@ -1,0 +1,4 @@
+POST https://httpbin.org/post
+
+Headers: {'Content-Type': 'application/json'}
+Body: {'name': '谷玉华', 'email': 'qiang11@example.org', 'age': 59, 'active': True}

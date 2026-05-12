@@ -1,0 +1,1 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 9ed6a1c7-b456-4588-8a64-f88f79435299 (测试任务)

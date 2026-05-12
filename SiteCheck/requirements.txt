@@ -1,0 +1,9 @@
+requests>=2.31.0
+APScheduler>=3.10.4
+matplotlib>=3.7.0
+pytest>=7.4.0
+allure-pytest>=2.13.2
+pytest-cov>=4.1.0
+pyOpenSSL>=23.2.0
+python-dotenv>=1.0.0
+PyYAML>=6.0

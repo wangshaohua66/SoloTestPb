@@ -1,0 +1,3 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+WARNING  core.scheduler:scheduler.py:117 调度器已经在运行中
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

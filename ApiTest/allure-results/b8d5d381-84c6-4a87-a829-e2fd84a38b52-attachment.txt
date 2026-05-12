@@ -1,0 +1,4 @@
+Status: 200
+Time: 1300.47ms
+
+Body: {'args': {}, 'data': '{"name": "\\u66f9\\u5764", "email": "huangyan@example.org", "age": 24, "active": true}', 'files': {}, 'form': {}, 'headers': {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'Content-Length': '84', 'Content-Type': 'application/json', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.34.0', 'X-Amzn-Trace-Id': 'Root=1-6a02a2d1-21be836f79a3567e3344b885'}, 'json': {'active': True, 'age': 24, 'email': 'huangyan@example.org', 'name': '曹坤'}, 'origin': '111.30.200.68', 'url': 'https://httpbin.org/post'}

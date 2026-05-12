@@ -1,0 +1,3 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: f1c9848b-3072-41a5-a167-db139fd0f8c1 (任务A)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: a312d121-612c-4289-83ee-72cde07da4f9 (任务B)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: f1c9848b-3072-41a5-a167-db139fd0f8c1 -> a312d121-612c-4289-83ee-72cde07da4f9

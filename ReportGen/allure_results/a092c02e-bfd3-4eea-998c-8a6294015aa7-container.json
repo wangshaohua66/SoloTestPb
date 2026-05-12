@@ -1,0 +1,1 @@
+{"uuid": "a2749eec-d4de-4345-9241-dcaf4ddaa5e7", "children": ["5117f82a-ac75-4cd6-a09a-bea879132cc8"], "befores": [{"name": "sample_dataframe", "status": "passed", "start": 1778482285006, "stop": 1778482285007}], "start": 1778482285006, "stop": 1778482285049}

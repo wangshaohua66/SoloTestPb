@@ -1,0 +1,4 @@
+Status: 200
+Time: 1477.37ms
+
+Body: {'args': {}, 'data': '{"name": "\\u59da\\u5f3a", "email": "yangwang@example.org", "age": 36, "active": true}', 'files': {}, 'form': {}, 'headers': {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'Content-Length': '84', 'Content-Type': 'application/json', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.34.0', 'X-Amzn-Trace-Id': 'Root=1-6a02a2ea-0826d1a7595971d91eac26b2'}, 'json': {'active': True, 'age': 36, 'email': 'yangwang@example.org', 'name': '姚强'}, 'origin': '111.30.200.68', 'url': 'https://httpbin.org/post'}

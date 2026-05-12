@@ -1,0 +1,9 @@
+2026-05-11 21:02:30,516 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:02:30,541 - core.services.task_service - INFO - 任务创建成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42 (CRUD测试任务)
+2026-05-11 21:02:30,542 - core.scheduler - INFO - 任务已注册: CRUD测试任务 (bb86f1c1-71fe-47a4-a6ad-e026cecadd42)
+2026-05-11 21:02:30,570 - core.services.task_service - INFO - 任务更新成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+2026-05-11 21:02:30,595 - core.scheduler - INFO - 任务已暂停: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+2026-05-11 21:02:30,626 - core.services.task_service - INFO - 任务更新成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+2026-05-11 21:02:30,658 - core.scheduler - INFO - 任务已恢复: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+2026-05-11 21:02:30,743 - core.services.task_service - INFO - 任务删除成功: bb86f1c1-71fe-47a4-a6ad-e026cecadd42
+2026-05-11 21:02:30,746 - core.scheduler - INFO - 任务调度器已停止

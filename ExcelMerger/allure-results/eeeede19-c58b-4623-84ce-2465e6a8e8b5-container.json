@@ -1,0 +1,1 @@
+{"uuid": "160b1f41-1cf6-450b-9a3f-56fbf080dfb3", "children": ["8342f1db-c992-49a4-ba52-31f0bfc1959a"], "befores": [{"name": "temp_excel_file", "status": "passed", "start": 1778557468971, "stop": 1778557469035}], "afters": [{"name": "temp_excel_file::0", "status": "passed", "start": 1778557469069, "stop": 1778557469151}], "start": 1778557468971, "stop": 1778557469151}

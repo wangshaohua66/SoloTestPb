@@ -1,0 +1,2 @@
+[32mINFO    [0m src.reporter:reporter.py:65 开始生成网站可用性统计报告
+[32mINFO    [0m src.reporter:reporter.py:81 报告已生成: C:\Users\WANGSH~1\AppData\Local\Temp\tmp8x4eq31p\report_20260512_144552.html

@@ -1,0 +1,5 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 9180746b-9794-4b8f-96b1-a106fdc5df0d (任务A)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: db3afdb4-7bfe-46d7-be3d-be6f946832b4 (任务B)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: ccffa8d9-fb18-424a-8433-9ffc9cb6a12d (任务C)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: 9180746b-9794-4b8f-96b1-a106fdc5df0d -> db3afdb4-7bfe-46d7-be3d-be6f946832b4
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: 9180746b-9794-4b8f-96b1-a106fdc5df0d -> ccffa8d9-fb18-424a-8433-9ffc9cb6a12d

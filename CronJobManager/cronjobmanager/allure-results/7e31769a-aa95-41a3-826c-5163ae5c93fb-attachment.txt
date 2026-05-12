@@ -1,0 +1,4 @@
+2026-05-11 21:04:18,313 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:04:18,350 - core.services.task_service - INFO - 任务创建成功: 719114e5-3ebc-4ac4-a910-0b01ca5ba71b (启动停止测试任务)
+2026-05-11 21:04:18,350 - core.scheduler - INFO - 任务已注册: 启动停止测试任务 (719114e5-3ebc-4ac4-a910-0b01ca5ba71b)
+2026-05-11 21:04:18,351 - core.scheduler - INFO - 任务调度器已停止
