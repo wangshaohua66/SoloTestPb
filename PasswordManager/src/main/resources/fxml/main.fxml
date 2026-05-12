@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.input.KeyCode?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.input.KeyCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #ecf0f1;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.passwordmanager.controller.MainController">
+    <children>
+        <VBox layoutX="0.0" layoutY="0.0" prefHeight="600.0" prefWidth="900.0">
+            <children>
+                <MenuBar>
+                    <menus>
+                        <Menu mnemonicParsing="false" text="文件">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleImport" text="导入数据" />
+                                <MenuItem mnemonicParsing="false" onAction="#handleExport" text="导出数据" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem mnemonicParsing="false" onAction="#handleBackup" text="创建备份" />
+                                <MenuItem mnemonicParsing="false" onAction="#handleRestore" text="恢复备份" />
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuLock" mnemonicParsing="false" onAction="#handleLock" text="锁定应用">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="L" control="UP" meta="DOWN" shift="UP" shortcut="DOWN" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#handleExit" text="退出" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="编辑">
+                            <items>
+                                <MenuItem fx:id="menuAdd" mnemonicParsing="false" onAction="#handleAdd" text="添加密码">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="N" control="UP" meta="DOWN" shift="UP" shortcut="DOWN" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="menuEdit" mnemonicParsing="false" onAction="#handleEdit" text="编辑密码">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="E" control="UP" meta="DOWN" shift="UP" shortcut="DOWN" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="menuDelete" mnemonicParsing="false" onAction="#handleDelete" text="删除密码">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="DELETE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                                    </accelerator>
+                                </MenuItem>
+                                <SeparatorMenuItem mnemonicParsing="false" />
+                                <MenuItem fx:id="menuCopyUsername" mnemonicParsing="false" onAction="#handleCopyUsername" text="复制用户名">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="U" control="UP" meta="DOWN" shift="UP" shortcut="DOWN" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="menuCopyPassword" mnemonicParsing="false" onAction="#handleCopyPassword" text="复制密码">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="C" control="UP" meta="DOWN" shift="UP" shortcut="DOWN" />
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem fx:id="menuHistory" mnemonicParsing="false" onAction="#handleHistory" text="查看密码历史" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="工具">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handlePasswordGenerator" text="密码生成器" />
+                                <MenuItem mnemonicParsing="false" onAction="#handlePasswordCheck" text="密码强度检测" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="设置">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#handleSettings" text="应用设置" />
+                                <MenuItem mnemonicParsing="false" onAction="#handleChangeMasterPassword" text="修改主密码" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #34495e; -fx-padding: 10;">
+                    <children>
+                        <Label style="-fx-text-fill: white;" text="搜索:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="searchTextField" onKeyReleased="#handleSearch" prefWidth="200.0" promptText="Ctrl+F 搜索..." />
+                        <Label style="-fx-text-fill: white;" text="分类:">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font>
+                        </Label>
+                        <ComboBox fx:id="categoryComboBox" onAction="#handleCategoryChange" prefWidth="150.0" />
+                        <Button fx:id="addButton" mnemonicParsing="false" onAction="#handleAdd" prefHeight="30.0" style="-fx-background-color: #27ae60; -fx-text-fill: white;" text="添加" />
+                        <Button fx:id="generatorButton" mnemonicParsing="false" onAction="#handlePasswordGenerator" prefHeight="30.0" style="-fx-background-color: #3498db; -fx-text-fill: white;" text="生成密码" />
+                    </children>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                </HBox>
+                <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="400.0">
+                    <content>
+                        <TableView fx:id="passwordTableView" prefHeight="400.0" prefWidth="898.0">
+                            <columns>
+                                <TableColumn fx:id="titleColumn" prefWidth="150.0" text="标题">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="title" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="usernameColumn" prefWidth="120.0" text="用户名">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="username" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="passwordColumn" prefWidth="120.0" text="密码">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="password" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="categoryColumn" prefWidth="80.0" text="分类">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="category" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="urlColumn" prefWidth="130.0" text="网址">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="url" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                                <TableColumn fx:id="favoriteColumn" prefWidth="50.0" text="收藏">
+                                    <cellValueFactory>
+                                        <PropertyValueFactory property="favorite" />
+                                    </cellValueFactory>
+                                </TableColumn>
+                            </columns>
+                        </TableView>
+                    </content>
+                </ScrollPane>
+                <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-background-color: #bdc3c7; -fx-padding: 10;">
+                    <children>
+                        <Label fx:id="statusLabel" style="-fx-text-fill: #333333;" text="就绪">
+                            <HBox.hgrow>
+                                <javafx.scene.layout.Priority>ALWAYS</javafx.scene.layout.Priority>
+                            </HBox.hgrow>
+                            <font>
+                                <Font name="System" size="12.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="editButton" mnemonicParsing="false" onAction="#handleEdit" prefHeight="30.0" style="-fx-background-color: #f39c12; -fx-text-fill: white;" text="编辑" />
+                        <Button fx:id="deleteButton" mnemonicParsing="false" onAction="#handleDelete" prefHeight="30.0" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="删除" />
+                        <Button fx:id="copyUsernameButton" mnemonicParsing="false" onAction="#handleCopyUsername" prefHeight="30.0" style="-fx-background-color: #9b59b6; -fx-text-fill: white;" text="复制用户名" />
+                        <Button fx:id="copyPasswordButton" mnemonicParsing="false" onAction="#handleCopyPassword" prefHeight="30.0" style="-fx-background-color: #1abc9c; -fx-text-fill: white;" text="复制密码" />
+                        <Button fx:id="historyButton" mnemonicParsing="false" onAction="#handleHistory" prefHeight="30.0" style="-fx-background-color: #34495e; -fx-text-fill: white;" text="历史" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

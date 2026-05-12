@@ -1,0 +1,205 @@
+/* 主样式 */
+.root {
+    -fx-background-color: #f5f5f5;
+    -fx-font-family: "Microsoft YaHei", "SimHei", sans-serif;
+    -fx-font-size: 13px;
+}
+
+/* 标签页样式 */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: #e0e0e0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: #f0f0f0;
+    -fx-background-insets: 0;
+    -fx-background-radius: 5 5 0 0;
+    -fx-padding: 8 15 8 15;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1 1 0 1;
+    -fx-border-radius: 5 5 0 0;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #666666;
+    -fx-font-weight: normal;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* 标题面板样式 */
+.titled-pane {
+    -fx-text-fill: #333333;
+}
+
+.titled-pane > .title {
+    -fx-background-color: linear-gradient(#e8e8e8, #d8d8d8);
+    -fx-background-insets: 0;
+    -fx-background-radius: 5;
+    -fx-padding: 8 12 8 12;
+    -fx-font-weight: bold;
+}
+
+.titled-pane > .content {
+    -fx-background-color: #ffffff;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0 0 5 5;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 0 1 1 1;
+    -fx-border-radius: 0 0 5 5;
+}
+
+/* 按钮样式 */
+.button {
+    -fx-background-color: linear-gradient(#4a90e2, #357abd);
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-padding: 8 16 8 16;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#5aa0f2, #4588cd);
+}
+
+.button:pressed {
+    -fx-background-color: linear-gradient(#357abd, #4a90e2);
+}
+
+/* 滑块样式 */
+.slider .track {
+    -fx-background-color: #dddddd;
+    -fx-background-radius: 5;
+    -fx-pref-height: 8;
+}
+
+.slider .thumb {
+    -fx-background-color: linear-gradient(#4a90e2, #357abd);
+    -fx-background-radius: 50%;
+    -fx-pref-width: 16;
+    -fx-pref-height: 16;
+}
+
+/* 文本框样式 */
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 6 10 6 10;
+}
+
+.text-field:focused {
+    -fx-border-color: #4a90e2;
+    -fx-border-width: 2;
+}
+
+/* 下拉框样式 */
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 6 10 6 10;
+}
+
+/* 列表视图样式 */
+.list-view {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.list-view .list-cell {
+    -fx-padding: 5;
+    -fx-background-color: transparent;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #e8f4fc;
+}
+
+/* 文本区域样式 */
+.text-area {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.text-area .content {
+    -fx-background-color: white;
+}
+
+/* 分隔面板样式 */
+.split-pane {
+    -fx-background-color: transparent;
+}
+
+.split-pane .split-pane-divider {
+    -fx-background-color: #e0e0e0;
+    -fx-padding: 1;
+}
+
+/* 颜色选择器样式 */
+.color-picker {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+/* 滚动条样式 */
+.scroll-bar {
+    -fx-background-color: #f5f5f5;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #cccccc;
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #aaaaaa;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #f0f0f0;
+}
+
+/* 对话框样式 */
+.dialog-pane {
+    -fx-background-color: #f5f5f5;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(#e8e8e8, #d8d8d8);
+}
+
+.dialog-pane .content {
+    -fx-padding: 20;
+}
+
+/* 提示框样式 */
+.tooltip {
+    -fx-background-color: #333333;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-padding: 6 10 6 10;
+    -fx-background-radius: 5;
+}

@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.colorpicker.controller.MainController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10"/>
+    </padding>
+    
+    <children>
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="颜色选择器" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            <Pane HBox.hgrow="ALWAYS"/>
+        </HBox>
+        
+        <TabPane fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <tabs>
+                <Tab text="颜色选择">
+                    <content>
+                        <SplitPane dividerPositions="0.55">
+                            <items>
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                    </padding>
+                                    <children>
+                                        <TitledPane text="色轮选择" collapsible="false">
+                                            <content>
+                                                <VBox spacing="10" alignment="CENTER">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <StackPane fx:id="colorWheelContainer" prefWidth="350" prefHeight="250" style="-fx-border-color: #cccccc; -fx-border-width: 1;"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="颜色预览" collapsible="false">
+                                            <content>
+                                                <VBox spacing="10" alignment="CENTER">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <HBox spacing="20" alignment="CENTER">
+                                                            <VBox alignment="CENTER" spacing="5">
+                                                                <Rectangle fx:id="colorPreviewRect" width="120" height="80" arcWidth="10" arcHeight="10" stroke="#888888"/>
+                                                                <Label fx:id="colorHexLabel" text="#000000" style="-fx-font-family: 'Monaco', 'Consolas', monospace; -fx-font-size: 14px;"/>
+                                                            </VBox>
+                                                            <VBox alignment="CENTER_LEFT" spacing="5">
+                                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                                    <Label text="颜色名称:"/>
+                                                                    <Label fx:id="colorNameLabel" text="--" style="-fx-font-weight: bold;"/>
+                                                                </HBox>
+                                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                                    <Label text="HEX:"/>
+                                                                    <Label fx:id="colorHexValueLabel" text="#000000"/>
+                                                                </HBox>
+                                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                                    <Label text="RGB:"/>
+                                                                    <Label fx:id="colorRgbValueLabel" text="(0, 0, 0)"/>
+                                                                </HBox>
+                                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                                    <Label text="HSV:"/>
+                                                                    <Label fx:id="colorHsvValueLabel" text="(0, 0%, 0%)"/>
+                                                                </HBox>
+                                                            </VBox>
+                                                        </HBox>
+                                                        <HBox spacing="5" alignment="CENTER">
+                                                            <Button text="添加到收藏" onAction="#addToFavorites"/>
+                                                            <Button text="复制HEX" onAction="#copyHex"/>
+                                                            <Button text="复制RGB" onAction="#copyRGB"/>
+                                                            <Button text="复制CSS" onAction="#copyCSS"/>
+                                                            <Button text="复制Android" onAction="#copyAndroid"/>
+                                                            <Button text="复制iOS" onAction="#copyiOS"/>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </VBox>
+                                
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                    </padding>
+                                    <children>
+                                        <TitledPane text="RGB调节" collapsible="true">
+                                            <content>
+                                                <GridPane hgap="10" vgap="10">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints minWidth="40" prefWidth="40"/>
+                                                        <ColumnConstraints hgrow="ALWAYS"/>
+                                                        <ColumnConstraints minWidth="60" prefWidth="60"/>
+                                                    </columnConstraints>
+                                                    <children>
+                                                        <Label text="R:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                        <Slider fx:id="redSlider" min="0" max="255" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                                        <TextField fx:id="redField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                                        
+                                                        <Label text="G:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                        <Slider fx:id="greenSlider" min="0" max="255" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                        <TextField fx:id="greenField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                                        
+                                                        <Label text="B:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                        <Slider fx:id="blueSlider" min="0" max="255" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                        <TextField fx:id="blueField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                                        
+                                                        <Label text="A:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                                        <Slider fx:id="alphaSlider" min="0" max="1" blockIncrement="0.01" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                                                        <TextField fx:id="alphaField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+                                                    </children>
+                                                </GridPane>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="HSV调节" collapsible="true">
+                                            <content>
+                                                <GridPane hgap="10" vgap="10">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <columnConstraints>
+                                                        <ColumnConstraints minWidth="40" prefWidth="40"/>
+                                                        <ColumnConstraints hgrow="ALWAYS"/>
+                                                        <ColumnConstraints minWidth="60" prefWidth="60"/>
+                                                    </columnConstraints>
+                                                    <children>
+                                                        <Label text="H:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                        <Slider fx:id="hueSlider" min="0" max="360" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                                        <TextField fx:id="hueField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                                                        
+                                                        <Label text="S:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                        <Slider fx:id="saturationSlider" min="0" max="100" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                        <TextField fx:id="saturationField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+                                                        
+                                                        <Label text="V:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                        <Slider fx:id="valueSlider" min="0" max="100" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                        <TextField fx:id="valueField" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+                                                    </children>
+                                                </GridPane>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="HEX输入" collapsible="true">
+                                            <content>
+                                                <VBox spacing="10">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Label text="HEX:"/>
+                                                            <TextField fx:id="hexField" prefWidth="150" promptText="#FF0000"/>
+                                                        </HBox>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Label text="名称搜索:"/>
+                                                            <TextField fx:id="colorNameSearchField" prefWidth="150" promptText="输入颜色名称"/>
+                                                            <Button fx:id="searchColorNameBtn" text="搜索" onAction="#searchColorName"/>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="颜色搭配" collapsible="true">
+                                            <content>
+                                                <VBox spacing="10">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <Label text="配色方案:"/>
+                                                        <ComboBox fx:id="harmonyCombo" prefWidth="200"/>
+                                                        <Label text="生成的配色:"/>
+                                                        <HBox fx:id="harmonyColorsBox" spacing="10" alignment="CENTER_LEFT"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </VBox>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </Tab>
+                
+                <Tab text="屏幕取色">
+                    <content>
+                        <SplitPane dividerPositions="0.5">
+                            <items>
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                    </padding>
+                                    <children>
+                                        <TitledPane text="取色控制" collapsible="false">
+                                            <content>
+                                                <VBox spacing="10">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Button fx:id="startPickerBtn" text="开始取色" prefWidth="100"/>
+                                                            <Label fx:id="pickerStatusLabel" text="点击开始取色"/>
+                                                        </HBox>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Label fx:id="pickerCoordsLabel" text="坐标: (0, 0)"/>
+                                                        </HBox>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Label text="放大倍数:"/>
+                                                            <ComboBox fx:id="zoomCombo" prefWidth="100"/>
+                                                        </HBox>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <CheckBox fx:id="showGridCheckBox" text="显示网格" selected="true"/>
+                                                            <CheckBox fx:id="showCrosshairCheckBox" text="显示十字线" selected="true"/>
+                                                        </HBox>
+                                                        <Separator prefWidth="200"/>
+                                                        <HBox spacing="10" alignment="CENTER_LEFT">
+                                                            <Label text="当前颜色:"/>
+                                                            <Rectangle fx:id="pickerPreviewRect" width="60" height="40" arcWidth="5" arcHeight="5" stroke="#888888"/>
+                                                            <VBox spacing="2" alignment="CENTER_LEFT">
+                                                                <Label fx:id="pickerHexLabel" text="#000000"/>
+                                                                <Label fx:id="pickerRgbLabel" text="rgb(0,0,0)"/>
+                                                            </VBox>
+                                                        </HBox>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="快捷键" collapsible="true">
+                                            <content>
+                                                <VBox spacing="5">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <Label text="空格 / 鼠标左键 - 确认取色并添加到历史"/>
+                                                        <Label text="ESC - 取消取色"/>
+                                                        <Label text="滚轮 - 调整放大倍数"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </VBox>
+                                
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                    </padding>
+                                    <children>
+                                        <TitledPane text="放大镜" collapsible="false">
+                                            <content>
+                                                <VBox spacing="10" alignment="CENTER">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <StackPane fx:id="magnifierContainer" prefWidth="200" prefHeight="200" style="-fx-border-color: #cccccc; -fx-border-width: 1;"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                        
+                                        <TitledPane text="取色历史" collapsible="true">
+                                            <content>
+                                                <VBox spacing="5">
+                                                    <padding>
+                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                    </padding>
+                                                    <children>
+                                                        <HBox spacing="5" alignment="CENTER_LEFT">
+                                                            <Button fx:id="clearHistoryBtn" text="清空历史" onAction="#clearPickerHistory"/>
+                                                            <Pane HBox.hgrow="ALWAYS"/>
+                                                        </HBox>
+                                                        <ListView fx:id="historyListView" prefHeight="150"/>
+                                                    </children>
+                                                </VBox>
+                                            </content>
+                                        </TitledPane>
+                                    </children>
+                                </VBox>
+                            </items>
+                        </SplitPane>
+                    </content>
+                </Tab>
+                
+                <Tab text="图片取色">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10"/>
+                            </padding>
+                            <children>
+                                <TitledPane text="图片导入" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                    <Button fx:id="openImageBtn" text="打开图片" onAction="#openImageFile"/>
+                                                    <Label fx:id="imageInfoLabel" text="未选择图片"/>
+                                                </HBox>
+                                                <StackPane fx:id="imagePreviewContainer" prefHeight="250" style="-fx-border-color: #cccccc; -fx-border-width: 1;"/>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                
+                                <TitledPane text="提取设置" collapsible="true">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                    <Label text="提取颜色数:"/>
+                                                    <ComboBox fx:id="extractColorCountCombo" prefWidth="100"/>
+                                                    <Button fx:id="extractColorsBtn" text="提取颜色" onAction="#extractColorsFromImage"/>
+                                                </HBox>
+                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                    <CheckBox fx:id="extractByHueCheckBox" text="按色相分组"/>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                
+                                <TitledPane text="提取结果" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <TabPane fx:id="extractResultTabPane" tabClosingPolicy="UNAVAILABLE">
+                                                    <tabs>
+                                                        <Tab text="主色调">
+                                                            <content>
+                                                                <VBox spacing="10">
+                                                                    <padding>
+                                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                                    </padding>
+                                                                    <children>
+                                                                        <HBox fx:id="dominantColorsBox" spacing="10" alignment="CENTER_LEFT"/>
+                                                                    </children>
+                                                                </VBox>
+                                                            </content>
+                                                        </Tab>
+                                                        <Tab text="按色相分组">
+                                                            <content>
+                                                                <VBox spacing="10">
+                                                                    <padding>
+                                                                        <Insets bottom="10" left="10" right="10" top="10"/>
+                                                                    </padding>
+                                                                    <children>
+                                                                        <ScrollPane fx:id="hueGroupScrollPane" prefHeight="150">
+                                                                            <content>
+                                                                                <VBox fx:id="hueGroupContainer" spacing="10"/>
+                                                                            </content>
+                                                                        </ScrollPane>
+                                                                    </children>
+                                                                </VBox>
+                                                            </content>
+                                                        </Tab>
+                                                    </tabs>
+                                                </TabPane>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <Tab text="颜色对比">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10"/>
+                            </padding>
+                            <children>
+                                <TitledPane text="对比度计算" collapsible="false">
+                                    <content>
+                                        <VBox spacing="15">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <GridPane hgap="20" vgap="10">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints prefWidth="150"/>
+                                                        <ColumnConstraints prefWidth="200"/>
+                                                    </columnConstraints>
+                                                    <children>
+                                                        <Label text="前景色:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                        <ColorPicker fx:id="foregroundPicker" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                                        
+                                                        <Label text="背景色:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                        <ColorPicker fx:id="backgroundPicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                    </children>
+                                                </GridPane>
+                                                
+                                                <HBox spacing="30" alignment="CENTER_LEFT">
+                                                    <Label fx:id="contrastRatioLabel" text="对比度: 0:1" style="-fx-font-size: 14px;"/>
+                                                    <Label fx:id="wcagLevelLabel" text="WCAG等级: --" style="-fx-font-size: 14px;"/>
+                                                </HBox>
+                                                
+                                                <VBox spacing="5">
+                                                    <Label text="普通文本 (4.5:1 AA, 7:1 AAA):"/>
+                                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                                        <Label fx:id="normalTextAA" text="AA: --" style="-fx-font-weight: bold;"/>
+                                                        <Label fx:id="normalTextAAA" text="AAA: --" style="-fx-font-weight: bold;"/>
+                                                    </HBox>
+                                                </VBox>
+                                                
+                                                <VBox spacing="5">
+                                                    <Label text="大文本 (3:1 AA, 4.5:1 AAA):"/>
+                                                    <HBox spacing="10" alignment="CENTER_LEFT">
+                                                        <Label fx:id="largeTextAA" text="AA: --" style="-fx-font-weight: bold;"/>
+                                                        <Label fx:id="largeTextAAA" text="AAA: --" style="-fx-font-weight: bold;"/>
+                                                    </HBox>
+                                                </VBox>
+                                                
+                                                <Label text="预览效果:"/>
+                                                <StackPane fx:id="contrastPreview" prefWidth="300" prefHeight="100" style="-fx-background-color: white; -fx-border-color: gray;">
+                                                    <children>
+                                                        <VBox alignment="CENTER" spacing="5">
+                                                            <Label fx:id="contrastTextNormal" text="普通文本 AaBbCc 123" style="-fx-font-size: 14px;"/>
+                                                            <Label fx:id="contrastTextLarge" text="大文本 AaBbCc 123" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                                                        </VBox>
+                                                    </children>
+                                                </StackPane>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <Tab text="渐变生成">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10"/>
+                            </padding>
+                            <children>
+                                <TitledPane text="渐变设置" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <GridPane hgap="20" vgap="10">
+                                                    <columnConstraints>
+                                                        <ColumnConstraints prefWidth="100"/>
+                                                        <ColumnConstraints prefWidth="200"/>
+                                                    </columnConstraints>
+                                                    <children>
+                                                        <Label text="起始颜色:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                                        <ColorPicker fx:id="gradStartPicker" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                                                        
+                                                        <Label text="结束颜色:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                                        <ColorPicker fx:id="gradEndPicker" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                                                        
+                                                        <Label text="渐变步数:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                                        <Slider fx:id="gradStepsSlider" min="2" max="30" majorTickUnit="1" showTickLabels="true" blockIncrement="1" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                                    </children>
+                                                </GridPane>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                
+                                <TitledPane text="渐变预览" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <HBox fx:id="gradientPreviewBox" spacing="0" alignment="CENTER_LEFT"/>
+                                                <Label text="CSS渐变代码:"/>
+                                                <TextArea fx:id="cssGradientTextArea" prefRowCount="2" editable="false" wrapText="true"/>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+                
+                <Tab text="颜色管理">
+                    <content>
+                        <VBox spacing="10">
+                            <padding>
+                                <Insets bottom="10" left="10" right="10" top="10"/>
+                            </padding>
+                            <children>
+                                <TitledPane text="搜索颜色" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                    <Label text="搜索:"/>
+                                                    <TextField fx:id="searchField" prefWidth="200" promptText="输入HEX或RGB值"/>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                
+                                <TitledPane text="收藏夹" collapsible="false">
+                                    <content>
+                                        <VBox spacing="5">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <ListView fx:id="favoritesListView" prefHeight="200"/>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                                
+                                <TitledPane text="颜色导出" collapsible="false">
+                                    <content>
+                                        <VBox spacing="10">
+                                            <padding>
+                                                <Insets bottom="10" left="10" right="10" top="10"/>
+                                            </padding>
+                                            <children>
+                                                <HBox spacing="10" alignment="CENTER_LEFT">
+                                                    <Label text="导出格式:"/>
+                                                    <ComboBox fx:id="exportFormatCombo" prefWidth="120"/>
+                                                </HBox>
+                                                <TextArea fx:id="exportTextArea" prefRowCount="10" editable="false" wrapText="true"/>
+                                            </children>
+                                        </VBox>
+                                    </content>
+                                </TitledPane>
+                            </children>
+                        </VBox>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+</VBox>
