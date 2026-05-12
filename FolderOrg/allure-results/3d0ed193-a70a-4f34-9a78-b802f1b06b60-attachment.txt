@@ -1,0 +1,2 @@
+[32mINFO    [0m FolderOrganizer:logger.py:98 定时整理任务已启动
+[32mINFO    [0m FolderOrganizer:logger.py:98 定时整理任务已停止

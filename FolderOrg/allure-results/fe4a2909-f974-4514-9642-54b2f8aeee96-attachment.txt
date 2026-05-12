@@ -1,0 +1,5 @@
+2026-05-11 07:49:06 - FolderOrganizer - DEBUG - debug message
+2026-05-11 07:49:06 - FolderOrganizer - INFO - info message
+2026-05-11 07:49:06 - FolderOrganizer - WARNING - warning message
+2026-05-11 07:49:06 - FolderOrganizer - ERROR - error message
+2026-05-11 07:49:06 - FolderOrganizer - CRITICAL - critical message
