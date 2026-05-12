@@ -1,0 +1,5 @@
+2026-05-11 21:02:30,135 - core.services.task_service - INFO - 任务创建成功: 81ca1507-e064-4bbc-b20c-afc5138ab684 (任务A)
+2026-05-11 21:02:30,136 - core.services.task_service - INFO - 任务创建成功: 88a3fabb-bf4b-4e7c-bf0b-b6f9bb725348 (任务B)
+2026-05-11 21:02:30,137 - core.services.task_service - INFO - 任务创建成功: 6620bf21-4e40-48f1-8ddf-e1693cff10f9 (任务C)
+2026-05-11 21:02:30,139 - core.services.dependency_service - INFO - 添加依赖关系: 81ca1507-e064-4bbc-b20c-afc5138ab684 -> 88a3fabb-bf4b-4e7c-bf0b-b6f9bb725348
+2026-05-11 21:02:30,142 - core.services.dependency_service - INFO - 添加依赖关系: 88a3fabb-bf4b-4e7c-bf0b-b6f9bb725348 -> 6620bf21-4e40-48f1-8ddf-e1693cff10f9

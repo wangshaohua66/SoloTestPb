@@ -1,0 +1,2 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: cb39c935-d0eb-4bd1-935f-1cfa75617b06 (要删除的任务)
+INFO     core.services.task_service:task_service.py:228 任务删除成功: cb39c935-d0eb-4bd1-935f-1cfa75617b06

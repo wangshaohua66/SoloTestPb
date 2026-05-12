@@ -1,0 +1,1 @@
+{"uuid": "ad81aa8e-7274-4f9a-809e-a0468a3020d5", "children": ["7e634deb-93ea-4fe3-948c-093b5c455aa6"], "befores": [{"name": "temp_yaml_file", "status": "passed", "start": 1778557632084, "stop": 1778557632085}], "afters": [{"name": "temp_yaml_file::0", "status": "passed", "start": 1778557632092, "stop": 1778557632114}], "start": 1778557632084, "stop": 1778557632114}

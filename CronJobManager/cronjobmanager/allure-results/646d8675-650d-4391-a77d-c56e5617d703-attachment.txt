@@ -1,0 +1,5 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: b421cfce-0361-467d-aa29-211e34a9c1d2 (测试任务0)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 033c2d61-7a05-4d49-b28c-6086ba969149 (测试任务1)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 92dad202-2b9b-4948-9e80-575ee74a0dac (测试任务2)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: f22623a2-83d9-40f7-8a00-0221a26b4d6b (测试任务3)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: f3261a26-4265-49d2-99cc-7f5fc024f29f (测试任务4)

@@ -1,0 +1,2 @@
+[32mINFO    [0m src.notifier:notifier.py:278 已配置 0 个通知渠道
+[32mINFO    [0m src.notifier:notifier.py:304 准备发送SSL告警: 测试站点

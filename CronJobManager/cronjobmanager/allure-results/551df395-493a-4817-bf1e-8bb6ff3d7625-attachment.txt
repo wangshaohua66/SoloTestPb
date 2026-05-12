@@ -1,0 +1,2 @@
+2026-05-11 21:38:46,670 - core.services.task_service - INFO - 任务创建成功: cb39c935-d0eb-4bd1-935f-1cfa75617b06 (要删除的任务)
+2026-05-11 21:38:46,676 - core.services.task_service - INFO - 任务删除成功: cb39c935-d0eb-4bd1-935f-1cfa75617b06

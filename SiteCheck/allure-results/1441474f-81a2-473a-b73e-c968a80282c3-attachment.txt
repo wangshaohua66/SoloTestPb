@@ -1,0 +1,6 @@
+2026-05-12 14:45:51,169 - src.http_checker - INFO - 开始检测站点: 测试站点 (https://example.com)
+2026-05-12 14:45:51,169 - src.http_checker - INFO - 开始检测站点: 测试站点 (https://example.com)
+2026-05-12 14:45:51,170 - src.http_checker - WARNING - 测试站点 检测失败: HTTP状态码异常: 500
+2026-05-12 14:45:51,170 - src.http_checker - WARNING - 测试站点 检测失败: HTTP状态码异常: 500
+2026-05-12 14:45:51,173 - src.http_checker - INFO - 测试站点 检测完成 - 响应时间: 3.7ms, 状态: 失败
+2026-05-12 14:45:51,173 - src.http_checker - INFO - 测试站点 检测完成 - 响应时间: 3.7ms, 状态: 失败

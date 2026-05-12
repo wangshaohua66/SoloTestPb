@@ -1,0 +1,4 @@
+2026-05-12 14:45:53,076 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (https://example.com)
+2026-05-12 14:45:53,076 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (https://example.com)
+2026-05-12 14:45:53,078 - src.ssl_checker - ERROR - 测试站点 SSL检测失败: 未知错误: 无法获取服务器证书
+2026-05-12 14:45:53,078 - src.ssl_checker - ERROR - 测试站点 SSL检测失败: 未知错误: 无法获取服务器证书

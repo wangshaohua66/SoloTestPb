@@ -1,0 +1,7 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 2ad9d4cd-fba8-4024-ad49-ef662584c79e (任务A)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 任务A (2ad9d4cd-fba8-4024-ad49-ef662584c79e)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 455a9682-0697-4974-b043-3d17c9ad9f11 (任务B)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: 2ad9d4cd-fba8-4024-ad49-ef662584c79e -> 455a9682-0697-4974-b043-3d17c9ad9f11
+INFO     core.scheduler:scheduler.py:253 任务已注册: 任务B (455a9682-0697-4974-b043-3d17c9ad9f11)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

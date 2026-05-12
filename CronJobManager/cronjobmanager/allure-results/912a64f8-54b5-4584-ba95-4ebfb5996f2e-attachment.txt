@@ -1,0 +1,4 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: a4b66ed9-113a-4b1a-bb41-c351e0d52e17 (测试Interval任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 测试Interval任务 (a4b66ed9-113a-4b1a-bb41-c351e0d52e17)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

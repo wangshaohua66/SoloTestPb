@@ -1,0 +1,5 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: c73442a8-0343-4cec-90ae-2cdc358f781a (测试任务)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 测试任务 (c73442a8-0343-4cec-90ae-2cdc358f781a)
+INFO     core.services.task_service:task_service.py:228 任务删除成功: c73442a8-0343-4cec-90ae-2cdc358f781a
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

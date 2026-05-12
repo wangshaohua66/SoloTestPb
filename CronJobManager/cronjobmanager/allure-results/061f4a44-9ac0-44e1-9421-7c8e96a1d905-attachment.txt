@@ -1,0 +1,8 @@
+2026-05-11 21:04:18,945 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:04:18,947 - core.services.task_service - INFO - 任务创建成功: d7a720eb-46d2-43a1-924f-35e493e9769c (任务0)
+2026-05-11 21:04:18,947 - core.scheduler - INFO - 任务已注册: 任务0 (d7a720eb-46d2-43a1-924f-35e493e9769c)
+2026-05-11 21:04:18,948 - core.services.task_service - INFO - 任务创建成功: 1aabe7da-f817-4301-80ba-156f1c98ef4d (任务1)
+2026-05-11 21:04:18,949 - core.scheduler - INFO - 任务已注册: 任务1 (1aabe7da-f817-4301-80ba-156f1c98ef4d)
+2026-05-11 21:04:18,949 - core.services.task_service - INFO - 任务创建成功: d3ff58af-7b26-48d0-aa36-bb44a2b78423 (任务2)
+2026-05-11 21:04:18,950 - core.scheduler - INFO - 任务已注册: 任务2 (d3ff58af-7b26-48d0-aa36-bb44a2b78423)
+2026-05-11 21:04:18,953 - core.scheduler - INFO - 任务调度器已停止

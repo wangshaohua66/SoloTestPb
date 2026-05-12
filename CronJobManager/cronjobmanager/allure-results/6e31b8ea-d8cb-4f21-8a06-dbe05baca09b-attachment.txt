@@ -1,0 +1,5 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 016cc596-0cae-48fc-8cd8-c105f90433bd (测试立即执行任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 测试立即执行任务 (016cc596-0cae-48fc-8cd8-c105f90433bd)
+INFO     core.scheduler:scheduler.py:347 任务执行成功: 测试立即执行任务 (执行ID: d712e321-8a21-4060-83a7-8cbf7e6c27e6, 重试次数: 0)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

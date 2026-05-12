@@ -1,0 +1,9 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: bb2f3c84-4097-46ad-8962-dd850ecf8a49 (端到端测试任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 端到端测试任务 (bb2f3c84-4097-46ad-8962-dd850ecf8a49)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "端到端测试任务 (trigger: date[2026-05-11 14:21:49 CST], next run at: 2026-05-11 14:21:49 CST)" was missed by 7:00:00.033335
+WARNING  core.scheduler:scheduler.py:360 任务执行失败，准备重试 (1/3): 端到端测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 5 秒
+WARNING  core.scheduler:scheduler.py:360 任务执行失败，准备重试 (2/3): 端到端测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 10 秒
+WARNING  core.scheduler:scheduler.py:360 任务执行失败，准备重试 (3/3): 端到端测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task, 等待 20 秒
+ERROR    core.scheduler:scheduler.py:366 任务执行失败，已达最大重试次数: 端到端测试任务, 错误: 模块 tests.test_helpers 中不存在函数 success_task
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

@@ -1,0 +1,14 @@
+[1m[31mERROR   [0m monitor.notifier.email_notifier:email_notifier.py:157 邮件发送失败: Test exception
+Traceback (most recent call last):
+  File "F:\github\SoloTestPb\ServerMonitor\monitor\notifier\email_notifier.py", line 145, in _send_email
+    server.sendmail(self._from_email, self._to_emails, msg.as_string())
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+Exception: Test exception

@@ -1,0 +1,1 @@
+{"uuid": "22ba8e95-2ff8-4eb9-8065-b9cbe2c55134", "children": ["0dc59125-b4e2-40bc-b2db-5d2f429d1ae1"], "befores": [{"name": "reset_singletons", "status": "passed", "start": 1778506723634, "stop": 1778506723634}], "afters": [{"name": "reset_singletons::0", "status": "passed", "start": 1778506723910, "stop": 1778506723910}], "start": 1778506723634, "stop": 1778506723910}

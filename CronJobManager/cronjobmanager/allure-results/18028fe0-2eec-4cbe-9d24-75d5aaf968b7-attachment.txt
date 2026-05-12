@@ -1,0 +1,6 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 56e99710-ada9-4b88-99d1-33f023d0c79b (端到端测试任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 端到端测试任务 (56e99710-ada9-4b88-99d1-33f023d0c79b)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "端到端测试任务 (trigger: date[2026-05-11 14:38:44 CST], next run at: 2026-05-11 14:38:44 CST)" was missed by 7:00:00.025596
+INFO     core.scheduler:scheduler.py:347 任务执行成功: 端到端测试任务 (执行ID: bc215228-bf1f-48c3-9de6-a0354968d2cb, 重试次数: 0)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

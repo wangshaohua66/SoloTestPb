@@ -1,0 +1,6 @@
+2026-05-12 14:45:51,387 - src.http_checker - INFO - 开始检测站点: 测试站点 (https://example.com)
+2026-05-12 14:45:51,387 - src.http_checker - INFO - 开始检测站点: 测试站点 (https://example.com)
+2026-05-12 14:45:51,387 - src.http_checker - ERROR - 测试站点 检测失败: 连接失败
+2026-05-12 14:45:51,387 - src.http_checker - ERROR - 测试站点 检测失败: 连接失败
+2026-05-12 14:45:51,387 - src.http_checker - INFO - 测试站点 检测完成 - 响应时间: 0.33ms, 状态: 失败
+2026-05-12 14:45:51,387 - src.http_checker - INFO - 测试站点 检测完成 - 响应时间: 0.33ms, 状态: 失败

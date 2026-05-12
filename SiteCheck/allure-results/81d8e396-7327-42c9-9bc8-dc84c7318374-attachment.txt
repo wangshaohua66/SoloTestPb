@@ -1,0 +1,2 @@
+[32mINFO    [0m src.ssl_checker:ssl_checker.py:105 开始检测SSL证书: 测试站点 (https://example.com)
+[31m[1mERROR   [0m src.ssl_checker:ssl_checker.py:165 测试站点 SSL检测失败: 连接超时

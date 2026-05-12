@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "output_path": "C:\\Users\\WANGSH~1\\AppData\\Local\\Temp\\tmpfcttppkh\\output.xlsx",
+  "duration_seconds": 1.0,
+  "row_count": 5,
+  "column_count": 5
+}
+
+报表生成成功！输出文件: C:\Users\WANGSH~1\AppData\Local\Temp\tmpfcttppkh\output.xlsx
+耗时: 1.00 秒
+数据行数: 5
+列数: 5

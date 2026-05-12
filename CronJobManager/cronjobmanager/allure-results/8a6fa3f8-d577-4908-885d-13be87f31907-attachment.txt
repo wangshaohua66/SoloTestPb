@@ -1,0 +1,2 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 779ed9c5-5519-432c-abd1-159b8f84e88b (Cron任务)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: e3c31d57-df56-46c5-9248-001bb2b835bf (Interval任务)

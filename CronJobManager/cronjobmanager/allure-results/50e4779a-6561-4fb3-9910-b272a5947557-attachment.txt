@@ -1,0 +1,4 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: c6fdea09-9a3a-48c9-824b-79da69516a43 (启用的持久化任务)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 启用的持久化任务 (c6fdea09-9a3a-48c9-824b-79da69516a43)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

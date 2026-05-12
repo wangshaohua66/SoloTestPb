@@ -1,0 +1,4 @@
+2026-05-11 21:38:46,251 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:46,253 - core.services.task_service - INFO - 任务创建成功: 9179dd8d-ee6c-48d0-920e-cf3ff25b41af (测试Cron任务)
+2026-05-11 21:38:46,253 - core.scheduler - INFO - 任务已注册: 测试Cron任务 (9179dd8d-ee6c-48d0-920e-cf3ff25b41af)
+2026-05-11 21:38:46,254 - core.scheduler - INFO - 任务调度器已停止

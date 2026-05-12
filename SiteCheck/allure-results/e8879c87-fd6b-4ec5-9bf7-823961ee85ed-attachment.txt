@@ -1,0 +1,4 @@
+2026-05-12 14:45:53,106 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (https://example.com)
+2026-05-12 14:45:53,106 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (https://example.com)
+2026-05-12 14:45:53,108 - src.ssl_checker - ERROR - 测试站点 SSL检测失败: SSL错误: ('SSL错误',)
+2026-05-12 14:45:53,108 - src.ssl_checker - ERROR - 测试站点 SSL检测失败: SSL错误: ('SSL错误',)

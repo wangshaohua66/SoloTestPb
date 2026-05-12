@@ -1,0 +1,5 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 808300bb-3883-451f-9ea4-1ec30725d405 (重试任务)
+INFO     core.scheduler:scheduler.py:251 任务已注册: 重试任务 (808300bb-3883-451f-9ea4-1ec30725d405)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "重试任务 (trigger: date[2026-05-11 14:04:17 CST], next run at: 2026-05-11 14:04:17 CST)" was missed by 7:00:00.036750
+INFO     core.scheduler:scheduler.py:148 任务调度器已停止

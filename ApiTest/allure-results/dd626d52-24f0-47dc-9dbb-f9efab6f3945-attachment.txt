@@ -1,0 +1,4 @@
+GET https://httpbin.org/uuid
+
+Headers: {}
+Body: {}

@@ -1,0 +1,4 @@
+2026-05-11 21:38:44,106 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:44,131 - core.services.task_service - INFO - 任务创建成功: a86a301a-c7e7-4b42-889f-9428491aaefa (重试任务)
+2026-05-11 21:38:44,132 - core.scheduler - INFO - 任务已注册: 重试任务 (a86a301a-c7e7-4b42-889f-9428491aaefa)
+2026-05-11 21:38:44,138 - core.scheduler - INFO - 任务调度器已停止

@@ -1,0 +1,5 @@
+2026-05-11 21:20:01,139 - core.services.task_service - INFO - 任务创建成功: 779c96ce-093f-4071-8800-325abcb951a6 (任务A)
+2026-05-11 21:20:01,140 - core.services.task_service - INFO - 任务创建成功: f23fc460-cdce-4ad2-a8be-0cfef9fef866 (任务B)
+2026-05-11 21:20:01,140 - core.services.task_service - INFO - 任务创建成功: 0eaa97f3-ae27-4921-8c7c-75a1127ed888 (任务C)
+2026-05-11 21:20:01,142 - core.services.dependency_service - INFO - 添加依赖关系: 779c96ce-093f-4071-8800-325abcb951a6 -> f23fc460-cdce-4ad2-a8be-0cfef9fef866
+2026-05-11 21:20:01,144 - core.services.dependency_service - INFO - 添加依赖关系: f23fc460-cdce-4ad2-a8be-0cfef9fef866 -> 0eaa97f3-ae27-4921-8c7c-75a1127ed888

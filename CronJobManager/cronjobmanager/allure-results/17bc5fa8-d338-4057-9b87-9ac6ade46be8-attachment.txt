@@ -1,0 +1,9 @@
+INFO     core.scheduler:scheduler.py:127 任务调度器已启动
+INFO     core.services.task_service:task_service.py:95 任务创建成功: be4d5196-4529-4d5c-9f56-dfba9ddaabe8 (任务A)
+INFO     core.scheduler:scheduler.py:253 任务已注册: 任务A (be4d5196-4529-4d5c-9f56-dfba9ddaabe8)
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "任务A (trigger: date[2026-05-11 14:38:43 CST], next run at: 2026-05-11 14:38:43 CST)" was missed by 7:00:00.024159
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 96fefdc8-2b89-4897-82a8-a61d1ec18a6d (任务B)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: be4d5196-4529-4d5c-9f56-dfba9ddaabe8 -> 96fefdc8-2b89-4897-82a8-a61d1ec18a6d
+WARNING  apscheduler.executors.default:base.py:126 Run time of job "任务B (trigger: date[2026-05-11 14:38:43 CST], next run at: 2026-05-11 14:38:43 CST)" was missed by 7:00:00.051680
+INFO     core.scheduler:scheduler.py:253 任务已注册: 任务B (96fefdc8-2b89-4897-82a8-a61d1ec18a6d)
+INFO     core.scheduler:scheduler.py:150 任务调度器已停止

@@ -1,0 +1,1 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 5a24ed0e-2851-4cea-bfd6-ac1d5736b78d (测试Interval任务)

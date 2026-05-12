@@ -1,0 +1,12 @@
+2026-05-11 21:38:45,702 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:45,725 - core.services.task_service - INFO - 任务创建成功: d7ee5ace-2b96-4490-9efe-0cc9bb3b2137 (启用的持久化任务)
+2026-05-11 21:38:45,726 - core.scheduler - INFO - 任务已注册: 启用的持久化任务 (d7ee5ace-2b96-4490-9efe-0cc9bb3b2137)
+2026-05-11 21:38:45,747 - core.services.task_service - INFO - 任务创建成功: 9e62721e-be57-46f2-8964-9ba56e21e57c (禁用的持久化任务)
+2026-05-11 21:38:45,748 - core.scheduler - INFO - 任务已注册: 禁用的持久化任务 (9e62721e-be57-46f2-8964-9ba56e21e57c)
+2026-05-11 21:38:45,771 - core.services.task_service - INFO - 任务更新成功: 9e62721e-be57-46f2-8964-9ba56e21e57c
+2026-05-11 21:38:45,793 - core.scheduler - INFO - 任务已暂停: 9e62721e-be57-46f2-8964-9ba56e21e57c
+2026-05-11 21:38:45,796 - core.scheduler - INFO - 任务调度器已停止
+2026-05-11 21:38:46,003 - core.scheduler - INFO - 任务已注册: 启用的持久化任务 (d7ee5ace-2b96-4490-9efe-0cc9bb3b2137)
+2026-05-11 21:38:46,004 - core.scheduler - INFO - 重新加载任务: 启用的持久化任务 (d7ee5ace-2b96-4490-9efe-0cc9bb3b2137)
+2026-05-11 21:38:46,004 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:38:46,006 - core.scheduler - INFO - 任务调度器已停止

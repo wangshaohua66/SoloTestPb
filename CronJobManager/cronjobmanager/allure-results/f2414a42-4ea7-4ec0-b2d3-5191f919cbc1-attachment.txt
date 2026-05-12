@@ -1,0 +1,1 @@
+2026-05-11 21:02:29,996 - core.services.alert_service - INFO - 邮件告警发送成功，收件人: ['admin@example.com']

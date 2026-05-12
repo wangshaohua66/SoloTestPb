@@ -1,0 +1,5 @@
+2026-05-11 21:22:26,135 - core.scheduler - INFO - 任务调度器已启动
+2026-05-11 21:22:26,137 - core.services.task_service - INFO - 任务创建成功: 016cc596-0cae-48fc-8cd8-c105f90433bd (测试立即执行任务)
+2026-05-11 21:22:26,137 - core.scheduler - INFO - 任务已注册: 测试立即执行任务 (016cc596-0cae-48fc-8cd8-c105f90433bd)
+2026-05-11 21:22:26,147 - core.scheduler - INFO - 任务执行成功: 测试立即执行任务 (执行ID: d712e321-8a21-4060-83a7-8cbf7e6c27e6, 重试次数: 0)
+2026-05-11 21:22:26,251 - core.scheduler - INFO - 任务调度器已停止

@@ -1,0 +1,4 @@
+2026-05-12 14:45:52,998 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (http://example.com)
+2026-05-12 14:45:52,998 - src.ssl_checker - INFO - 开始检测SSL证书: 测试站点 (http://example.com)
+2026-05-12 14:45:52,999 - src.ssl_checker - INFO - 测试站点: 非HTTPS协议，跳过SSL检测
+2026-05-12 14:45:52,999 - src.ssl_checker - INFO - 测试站点: 非HTTPS协议，跳过SSL检测

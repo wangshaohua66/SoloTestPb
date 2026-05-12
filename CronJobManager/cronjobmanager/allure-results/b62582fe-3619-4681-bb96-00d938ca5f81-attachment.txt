@@ -1,0 +1,6 @@
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 8a945d4c-88f0-43a0-9300-0a46db2d5082 (任务A)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: 8f6a1beb-d4de-4aad-8f6b-ff31c179aacc (任务B)
+INFO     core.services.task_service:task_service.py:95 任务创建成功: ef10f6f7-220d-4810-91d9-58b376499430 (任务C)
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: 8a945d4c-88f0-43a0-9300-0a46db2d5082 -> 8f6a1beb-d4de-4aad-8f6b-ff31c179aacc
+INFO     core.services.dependency_service:dependency_service.py:70 添加依赖关系: ef10f6f7-220d-4810-91d9-58b376499430 -> 8a945d4c-88f0-43a0-9300-0a46db2d5082
+INFO     core.services.dependency_service:dependency_service.py:169 删除任务 8a945d4c-88f0-43a0-9300-0a46db2d5082 的所有依赖关系，共 2 个

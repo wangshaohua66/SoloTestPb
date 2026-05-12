@@ -1,0 +1,28 @@
+2026-05-12 14:45:52,810 - src.scheduler - INFO - 开始检测站点: 测试站点1
+2026-05-12 14:45:52,810 - src.scheduler - INFO - 开始检测站点: 测试站点1
+2026-05-12 14:45:52,810 - src.scheduler - ERROR - 检测站点 测试站点1 时发生异常: 测试异常
+Traceback (most recent call last):
+  File "F:\github\SoloTestPb\SiteCheck\src\scheduler.py", line 61, in _check_site
+    http_result = self.http_checker.check(site)
+  File "D:\python3\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+Exception: 测试异常
+2026-05-12 14:45:52,810 - src.scheduler - ERROR - 检测站点 测试站点1 时发生异常: 测试异常
+Traceback (most recent call last):
+  File "F:\github\SoloTestPb\SiteCheck\src\scheduler.py", line 61, in _check_site
+    http_result = self.http_checker.check(site)
+  File "D:\python3\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+Exception: 测试异常

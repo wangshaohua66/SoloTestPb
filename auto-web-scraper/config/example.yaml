@@ -1,0 +1,76 @@
+name: "示例采集任务"
+start_urls:
+  - "https://example.com/products"
+
+selectors:
+  - name: "product_name"
+    selector: "h1.product-title"
+    selector_type: "css"
+    is_list: false
+    default_value: "N/A"
+
+  - name: "product_price"
+    selector: ".price"
+    selector_type: "css"
+    is_list: false
+    default_value: "0"
+
+  - name: "product_images"
+    selector: ".gallery img"
+    selector_type: "css"
+    attribute: "src"
+    is_list: true
+    default_value: []
+
+  - name: "description"
+    selector: "//div[@class='description']"
+    selector_type: "xpath"
+    is_list: false
+
+login:
+  login_url: "https://example.com/login"
+  username: "your_username"
+  password: "your_password"
+  username_field: "username"
+  password_field: "password"
+  extra_fields:
+    remember: "1"
+  success_indicator: "欢迎回来"
+
+pagination:
+  enabled: true
+  selector: "a.next"
+  selector_type: "css"
+  max_pages: 10
+  start_page: 1
+
+request:
+  timeout: 30
+  headers:
+    User-Agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/120.0.0.0"
+    Accept-Language: "zh-CN,zh;q=0.9"
+  verify_ssl: true
+
+rate_limit:
+  min_delay: 1.0
+  max_delay: 3.0
+  random_delay: true
+  concurrency: 1
+
+proxy:
+  enabled: false
+  proxies:
+    - "http://127.0.0.1:8080"
+    - "http://127.0.0.1:8081"
+  rotation_strategy: "round_robin"
+
+export:
+  formats:
+    - "json"
+    - "csv"
+    - "excel"
+  output_dir: "./output"
+  filename_prefix: "products"
+
+retry_times: 3
+retry_delay: 2.0

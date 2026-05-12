@@ -1,0 +1,4 @@
+Status: 200
+Time: 1302.4ms
+
+Body: {'args': {}, 'data': '{"name": "\\u5f90\\u4e3d\\u4e3d", "email": "na77@example.org", "age": 58, "active": true}', 'files': {}, 'form': {}, 'headers': {'Accept': '*/*', 'Accept-Encoding': 'gzip, deflate', 'Content-Length': '86', 'Content-Type': 'application/json', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.34.0', 'X-Amzn-Trace-Id': 'Root=1-6a02a2b8-0887a4373cbbaa2327c67f48'}, 'json': {'active': True, 'age': 58, 'email': 'na77@example.org', 'name': '徐丽丽'}, 'origin': '111.30.200.68', 'url': 'https://httpbin.org/post'}

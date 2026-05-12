@@ -1,0 +1,15 @@
+[32mINFO    [0m src.scheduler:scheduler.py:80 开始执行定时报告生成任务
+[31m[1mERROR   [0m src.scheduler:scheduler.py:83 生成报告时发生异常: 生成报告失败
+Traceback (most recent call last):
+  File "F:\github\SoloTestPb\SiteCheck\src\scheduler.py", line 81, in _generate_report_job
+    self.reporter.generate_report()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "D:\python3\Lib\unittest\mock.py", line 1169, in __call__
+    return self._mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1173, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "D:\python3\Lib\unittest\mock.py", line 1234, in _execute_mock_call
+    raise effect
+Exception: 生成报告失败

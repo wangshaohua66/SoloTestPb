@@ -1,0 +1,2 @@
+2026-05-11 21:38:46,640 - core.services.task_service - INFO - 任务创建成功: 7c9cec4a-0a0a-4322-abdc-b3718a44863c (Cron任务)
+2026-05-11 21:38:46,641 - core.services.task_service - INFO - 任务创建成功: 75c159fd-a975-4de2-b8b0-f89c53cc7e40 (Interval任务)

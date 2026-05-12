@@ -1,0 +1,4 @@
+Status: 200
+Time: 1382.3ms
+
+Body: {'args': {'foo': 'bar', 'test': '123'}, 'headers': {'Accept': 'application/json', 'Accept-Encoding': 'gzip, deflate', 'Content-Length': '2', 'Content-Type': 'application/json', 'Host': 'httpbin.org', 'User-Agent': 'python-requests/2.34.0', 'X-Amzn-Trace-Id': 'Root=1-6a02a125-103d1e9e37c15e030d43998f'}, 'origin': '111.30.200.68', 'url': 'https://httpbin.org/get?foo=bar&test=123'}
