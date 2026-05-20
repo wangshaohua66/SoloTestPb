@@ -1,0 +1,16 @@
+server:
+  port: 8080
+  mode: debug
+
+database:
+  driver: sqlite
+  dsn: task_scheduler.db
+
+log:
+  level: info
+  filename: logs/task-scheduler.log
+
+scheduler:
+  max_concurrent_tasks: 10
+  default_timeout: 300
+  max_retry_count: 3
