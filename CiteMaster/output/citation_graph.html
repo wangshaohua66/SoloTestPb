@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation Graph - CiteMaster</title>
+    <style>
+        .error-banner {
+            display: none;
+            background: #e74c3c;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 2px solid #c0392b;
+        }
+        .error-banner.show {
+            display: block;
+        }
+        .fallback-container {
+            display: none;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .fallback-container.show {
+            display: block;
+        }
+        .fallback-section {
+            background: #0f3460;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .fallback-section h3 {
+            color: #e94560;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #533483;
+        }
+        .fallback-paper {
+            background: #16213e;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            border-left: 4px solid #533483;
+        }
+        .fallback-paper.high-cited {
+            border-left-color: #e94560;
+        }
+        .fallback-paper.isolated {
+            border-left-color: #f39c12;
+        }
+        .fallback-paper h4 {
+            margin: 0 0 8px 0;
+            color: #fff;
+            font-size: 14px;
+        }
+        .fallback-paper .meta {
+            color: #aaa;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .fallback-paper .relations {
+            font-size: 11px;
+            color: #888;
+        }
+        .fallback-paper .relations span {
+            display: inline-block;
+            background: #533483;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            margin-top: 4px;
+        }
+        .retry-btn {
+            background: #e94560;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 12px;
+        }
+        .retry-btn:hover {
+            background: #d63850;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        .loading.show {
+            display: block;
+        }
+        .offline-notice {
+            background: #f39c12;
+            color: #1a1a2e;
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            display: none;
+        }
+        .offline-notice.show {
+            display: block;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #eee;
+            min-height: 100vh;
+        }
+        .header {
+            padding: 20px;
+            background: #16213e;
+            border-bottom: 1px solid #0f3460;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .stats {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            background: #0f3460;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #aaa;
+            text-transform: uppercase;
+        }
+        .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #e94560;
+        }
+        #graph-container {
+            width: 100%;
+            height: calc(100vh - 120px);
+            position: relative;
+        }
+        .tooltip {
+            position: absolute;
+            background: rgba(15, 52, 96, 0.95);
+            padding: 15px;
+            border-radius: 8px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            max-width: 350px;
+            border: 1px solid #e94560;
+            z-index: 1000;
+        }
+        .tooltip h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #e94560;
+        }
+        .tooltip p {
+            font-size: 12px;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+        .node {
+            cursor: pointer;
+            transition: stroke-width 0.2s;
+        }
+        .node:hover {
+            stroke-width: 3px;
+        }
+        .link {
+            stroke: #533483;
+            stroke-opacity: 0.6;
+            transition: stroke-opacity 0.2s;
+        }
+        .link:hover {
+            stroke-opacity: 1;
+        }
+        .node-label {
+            font-size: 9px;
+            fill: #fff;
+            pointer-events: none;
+            text-shadow: 0 0 3px #000;
+        }
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(15, 52, 96, 0.9);
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-banner" id="error-banner">
+        ⚠️ D3.js library failed to load. Network connection may be unavailable.
+        <button class="retry-btn" onclick="location.reload()">Retry</button>
+    </div>
+    <div class="header">
+        <h1>📚 Citation Graph Visualization</h1>
+        <div class="offline-notice" id="offline-notice">
+            🔌 Offline mode - Showing static view. Connect to internet and refresh for interactive graph.
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-label">Total Papers</div>
+                <div class="stat-value" id="total-nodes">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Citations</div>
+                <div class="stat-value" id="total-edges">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Avg Connections</div>
+                <div class="stat-value" id="avg-degree">0</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">Components</div>
+                <div class="stat-value" id="components">0</div>
+            </div>
+        </div>
+    </div>
+    <div id="graph-container">
+        <div class="tooltip" id="tooltip"></div>
+        <div class="loading" id="loading">
+            <div style="font-size: 18px; margin-bottom: 10px;">⏳ Loading interactive graph...</div>
+            <div style="font-size: 13px; color: #888;">If this takes too long, check your network connection</div>
+        </div>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #e94560;"></div>
+                <span>Highly cited (≥5)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #533483;"></div>
+                <span>Moderately cited</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #0f3460;"></div>
+                <span>Low cited</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f39c12;"></div>
+                <span>Isolated</span>
+            </div>
+        </div>
+    </div>
+    <div class="fallback-container" id="fallback-container">
+        <div class="fallback-section">
+            <h3>📄 All Papers (8)</h3>
+            
+            <div class="fallback-paper">
+                <h4>Literate Programming</h4>
+                <div class="meta">Knuth, Donald E. • 1984 • article</div>
+                <div class="relations"><span>📥 Cited by: 1</span></div>
+            </div>
+            
+
+            <div class="fallback-paper">
+                <h4>Time, Clocks, and the Ordering of Events in a Distributed System</h4>
+                <div class="meta">Lamport, Leslie • 1978 • article</div>
+                <div class="relations"><span>📥 Cited by: 1</span></div>
+            </div>
+            
+
+            <div class="fallback-paper isolated">
+                <h4>Information Management: A Proposal</h4>
+                <div class="meta">Berners-Lee, Timothy • 1989 • phdthesis</div>
+                <div class="relations"><span style="background: #f39c12; color: #1a1a2e;">🔒 Isolated</span></div>
+            </div>
+            
+
+            <div class="fallback-paper isolated">
+                <h4>A Protocol for Packet Network Intercommunication</h4>
+                <div class="meta">Cerf, Vinton G. and Kahn, Robert E. • 1974 • techreport</div>
+                <div class="relations"><span style="background: #f39c12; color: #1a1a2e;">🔒 Isolated</span></div>
+            </div>
+            
+
+            <div class="fallback-paper">
+                <h4>MapReduce: Simplified Data Processing on Large Clusters</h4>
+                <div class="meta">Dean, Jeffrey and Ghemawat, Sanjay • 2004 • inproceedings</div>
+                <div class="relations"><span>📤 Cites: 2</span></div>
+            </div>
+            
+
+            <div class="fallback-paper isolated">
+                <h4>The LaTeX Companion</h4>
+                <div class="meta">Goossens, Michel and Mittelbach, Frank and Samarin, Alexander • 1994 • book</div>
+                <div class="relations"><span style="background: #f39c12; color: #1a1a2e;">🔒 Isolated</span></div>
+            </div>
+            
+
+            <div class="fallback-paper isolated">
+                <h4>A Mathematical Theory of Communication</h4>
+                <div class="meta">Shannon, Claude E. • 1948 • article</div>
+                <div class="relations"><span style="background: #f39c12; color: #1a1a2e;">🔒 Isolated</span></div>
+            </div>
+            
+
+            <div class="fallback-paper isolated">
+                <h4>Computing Machinery and Intelligence</h4>
+                <div class="meta">Turing, Alan M. • 1950 • article</div>
+                <div class="relations"><span style="background: #f39c12; color: #1a1a2e;">🔒 Isolated</span></div>
+            </div>
+            
+        </div>
+        <div class="fallback-section">
+            <h3>🔗 Citation Relations (2)</h3>
+            
+            <div class="fallback-paper">
+                <h4>🔗 Dean (2004) → Knuth (1984)</h4>
+                <div class="meta">MapReduce: Simplified Data Processing on Large Clusters</div>
+                <div class="relations">
+                    <span>cites</span>
+                    <span>Literate Programming</span>
+                </div>
+            </div>
+            
+
+            <div class="fallback-paper">
+                <h4>🔗 Dean (2004) → Lamport (1978)</h4>
+                <div class="meta">MapReduce: Simplified Data Processing on Large Clusters</div>
+                <div class="relations">
+                    <span>cites</span>
+                    <span>Time, Clocks, and the Ordering of Events in a Distributed System</span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        const graphData = {
+  "nodes": [
+    {
+      "id": "bernerslee1989information",
+      "title": "Information Management: A Proposal",
+      "author": "Berners-Lee, Timothy",
+      "year": 1989,
+      "label": "Berners-Lee (1989)",
+      "entry_type": "phdthesis",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "cerf1974protocol",
+      "title": "A Protocol for Packet Network Intercommunication",
+      "author": "Cerf, Vinton G. and Kahn, Robert E.",
+      "year": 1974,
+      "label": "Cerf (1974)",
+      "entry_type": "techreport",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "dean2004mapreduce",
+      "title": "MapReduce: Simplified Data Processing on Large Clusters",
+      "author": "Dean, Jeffrey and Ghemawat, Sanjay",
+      "year": 2004,
+      "label": "Dean (2004)",
+      "entry_type": "inproceedings",
+      "citation_count": 2,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "goossens1994latex",
+      "title": "The LaTeX Companion",
+      "author": "Goossens, Michel and Mittelbach, Frank and Samarin, Alexander",
+      "year": 1994,
+      "label": "Goossens (1994)",
+      "entry_type": "book",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "knuth1984literate",
+      "title": "Literate Programming",
+      "author": "Knuth, Donald E.",
+      "year": 1984,
+      "label": "Knuth (1984)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 1,
+      "tags": []
+    },
+    {
+      "id": "lamport1978time",
+      "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+      "author": "Lamport, Leslie",
+      "year": 1978,
+      "label": "Lamport (1978)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 1,
+      "tags": []
+    },
+    {
+      "id": "shannon1948mathematical",
+      "title": "A Mathematical Theory of Communication",
+      "author": "Shannon, Claude E.",
+      "year": 1948,
+      "label": "Shannon (1948)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "turing1950computing",
+      "title": "Computing Machinery and Intelligence",
+      "author": "Turing, Alan M.",
+      "year": 1950,
+      "label": "Turing (1950)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "dean2004mapreduce",
+      "target": "knuth1984literate",
+      "weight": 1
+    },
+    {
+      "source": "dean2004mapreduce",
+      "target": "lamport1978time",
+      "weight": 1
+    }
+  ],
+  "summary": {
+    "total_nodes": 8,
+    "total_edges": 2,
+    "connected_components": 6,
+    "avg_degree": 0.5,
+    "max_degree": 2,
+    "isolated_nodes": 5,
+    "largest_component_size": 3,
+    "top_cited": [
+      [
+        "knuth1984literate",
+        1
+      ],
+      [
+        "lamport1978time",
+        1
+      ],
+      [
+        "bernerslee1989information",
+        0
+      ],
+      [
+        "cerf1974protocol",
+        0
+      ],
+      [
+        "dean2004mapreduce",
+        0
+      ]
+    ],
+    "top_citing": [
+      [
+        "dean2004mapreduce",
+        2
+      ],
+      [
+        "bernerslee1989information",
+        0
+      ],
+      [
+        "cerf1974protocol",
+        0
+      ],
+      [
+        "goossens1994latex",
+        0
+      ],
+      [
+        "knuth1984literate",
+        0
+      ]
+    ]
+  }
+};
+
+        document.getElementById('total-nodes').textContent = graphData.summary.total_nodes;
+        document.getElementById('total-edges').textContent = graphData.summary.total_edges;
+        document.getElementById('avg-degree').textContent = graphData.summary.avg_degree.toFixed(1);
+        document.getElementById('components').textContent = graphData.summary.connected_components;
+
+        function showOfflineMode(message) {
+            document.getElementById('error-banner').classList.add('show');
+            document.getElementById('offline-notice').classList.add('show');
+            document.getElementById('graph-container').style.display = 'none';
+            document.getElementById('fallback-container').classList.add('show');
+            if (message) {
+                document.getElementById('error-banner').innerHTML =
+                    '⚠️ ' + message + ' <button class="retry-btn" onclick="location.reload()">Retry</button>';
+            }
+            console.warn('D3.js not available, showing offline fallback view');
+        }
+
+        function showInteractiveMode() {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('graph-container').style.display = 'block';
+        }
+
+        function loadD3(callback) {
+            if (typeof d3 !== 'undefined') {
+                callback(null, d3);
+                return;
+            }
+
+            document.getElementById('loading').classList.add('show');
+            const script = document.createElement('script');
+            script.src = 'https://d3js.org/d3.v7.min.js';
+            script.onload = function() {
+                callback(null, d3);
+            };
+            script.onerror = function() {
+                callback(new Error('Failed to load D3.js from CDN'), null);
+            };
+            document.head.appendChild(script);
+
+            setTimeout(function() {
+                if (typeof d3 === 'undefined') {
+                    callback(new Error('D3.js loading timed out after 10 seconds'), null);
+                }
+            }, 10000);
+        }
+
+        function initializeGraph(d3) {
+            const container = document.getElementById('graph-container');
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+
+            const svg = d3.select('#graph-container')
+                .append('svg')
+                .attr('width', width)
+                .attr('height', height);
+
+            const tooltip = d3.select('#tooltip');
+
+            const defs = svg.append('defs');
+            defs.append('marker')
+                .attr('id', 'arrowhead')
+                .attr('viewBox', '-0 -5 10 10')
+                .attr('refX', 25)
+                .attr('refY', 0)
+                .attr('orient', 'auto')
+                .attr('markerWidth', 6)
+                .attr('markerHeight', 6)
+                .append('path')
+                .attr('d', 'M 0,-5 L 10,0 L 0,5')
+                .attr('fill', '#533483')
+                .attr('fill-opacity', 0.6);
+
+            const getNodeColor = (node) => {
+                if (node.cited_by_count === 0 && node.citation_count === 0) return '#f39c12';
+                if (node.cited_by_count >= 5) return '#e94560';
+                if (node.cited_by_count >= 2) return '#533483';
+                return '#0f3460';
+            };
+
+            const getNodeRadius = (node) => {
+                return Math.max(8, Math.min(30, 8 + node.cited_by_count * 2));
+            };
+
+            const simulation = d3.forceSimulation(graphData.nodes)
+                .force('link', d3.forceLink(graphData.edges).id(d => d.id).distance(100))
+                .force('charge', d3.forceManyBody().strength(-300))
+                .force('center', d3.forceCenter(width / 2, height / 2))
+                .force('collision', d3.forceCollide().radius(d => getNodeRadius(d) + 5));
+
+            const link = svg.append('g')
+                .selectAll('line')
+                .data(graphData.edges)
+                .enter().append('line')
+                .attr('class', 'link')
+                .attr('marker-end', 'url(#arrowhead)')
+                .attr('stroke-width', d => Math.max(1, Math.min(3, d.weight)));
+
+            const node = svg.append('g')
+                .selectAll('circle')
+                .data(graphData.nodes)
+                .enter().append('circle')
+                .attr('class', 'node')
+                .attr('r', d => getNodeRadius(d))
+                .attr('fill', d => getNodeColor(d))
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 1.5)
+                .call(d3.drag()
+                    .on('start', dragstarted)
+                    .on('drag', dragged)
+                    .on('end', dragended));
+
+            const label = svg.append('g')
+                .selectAll('text')
+                .data(graphData.nodes)
+                .enter().append('text')
+                .attr('class', 'node-label')
+                .attr('text-anchor', 'middle')
+                .attr('dy', d => -getNodeRadius(d) - 5)
+                .text(d => d.label);
+
+            node.on('mouseover', (event, d) => {
+                tooltip.style('opacity', 1)
+                    .html(`
+                        <h3>${d.title}</h3>
+                        <p><strong>Author:</strong> ${d.author}</p>
+                        <p><strong>Year:</strong> ${d.year || 'N/A'}</p>
+                        <p><strong>Type:</strong> ${d.entry_type}</p>
+                        <p><strong>Cites:</strong> ${d.citation_count} papers</p>
+                        <p><strong>Cited by:</strong> ${d.cited_by_count} papers</p>
+                        ${d.tags.length > 0 ? `<p><strong>Tags:</strong> ${d.tags.join(', ')}</p>` : ''}
+                    `)
+                    .style('left', (event.pageX + 15) + 'px')
+                    .style('top', (event.pageY - 10) + 'px');
+            })
+            .on('mouseout', () => {
+                tooltip.style('opacity', 0);
+            });
+
+            function dragstarted(event, d) {
+                if (!event.active) simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+
+            function dragged(event, d) {
+                d.fx = event.x;
+                d.fy = event.y;
+            }
+
+            function dragended(event, d) {
+                if (!event.active) simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+
+            simulation.on('tick', () => {
+                link
+                    .attr('x1', d => d.source.x)
+                    .attr('y1', d => d.source.y)
+                    .attr('x2', d => d.target.x)
+                    .attr('y2', d => d.target.y);
+
+                node
+                    .attr('cx', d => d.x)
+                    .attr('cy', d => d.y);
+
+                label
+                    .attr('x', d => d.x)
+                    .attr('y', d => d.y);
+            });
+
+            window.addEventListener('resize', () => {
+                const newWidth = container.clientWidth;
+                const newHeight = container.clientHeight;
+                svg.attr('width', newWidth).attr('height', newHeight);
+                simulation.force('center', d3.forceCenter(newWidth / 2, newHeight / 2));
+                simulation.alpha(0.3).restart();
+            });
+
+            showInteractiveMode();
+        }
+
+        loadD3(function(err, d3) {
+            if (err) {
+                showOfflineMode(err.message);
+            } else {
+                try {
+                    initializeGraph(d3);
+                } catch (e) {
+                    console.error('Failed to initialize graph:', e);
+                    showOfflineMode('Failed to render interactive graph');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

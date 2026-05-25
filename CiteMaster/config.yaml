@@ -1,0 +1,28 @@
+# CiteMaster Configuration File
+
+default_citation_format: apa
+
+library_path: data/library.json
+
+bibtex_path: data/library.bib
+
+output_encoding: utf-8
+
+max_file_size_mb: 10
+
+log_level: INFO
+
+graph_output_path: data/citation_graph.html
+
+supported_formats:
+  - apa
+  - mla
+  - chicago
+  - ieee
+
+required_fields:
+  - title
+  - author
+  - year
+
+templates_dir: templates
