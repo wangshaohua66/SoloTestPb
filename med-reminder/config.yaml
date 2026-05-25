@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  mode: release
+  read_timeout: 30s
+  write_timeout: 30s
+  timezone: "Asia/Shanghai"
+
+database:
+  path: "./data/med_reminder.db"
+  backup_path: "./data/backup"
+  backup_interval: "24h"
+  max_backups: 7
+
+reminder:
+  check_frequency: "1m"
+  default_lead_minutes: 5
+  max_reminders_per_med: 10
+  conflict_merge_window_minutes: 10
+  dispatch_workers: 3
+  max_retry: 3
+  missed_window: "2h"
+
+logging:
+  level: "info"
+  file: "./logs/med_reminder.log"
+  max_size_mb: 100
+  max_backups: 5
+  max_age_days: 30
+
+analytics:
+  adherence_window_days: 30
+  miss_risk_threshold: 0.8
