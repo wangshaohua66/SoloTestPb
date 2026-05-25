@@ -1,0 +1,157 @@
+{
+  "nodes": [
+    {
+      "id": "bernerslee1989information",
+      "title": "Information Management: A Proposal",
+      "author": "Berners-Lee, Timothy",
+      "year": 1989,
+      "label": "Berners-Lee (1989)",
+      "entry_type": "phdthesis",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "cerf1974protocol",
+      "title": "A Protocol for Packet Network Intercommunication",
+      "author": "Cerf, Vinton G. and Kahn, Robert E.",
+      "year": 1974,
+      "label": "Cerf (1974)",
+      "entry_type": "techreport",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "dean2004mapreduce",
+      "title": "MapReduce: Simplified Data Processing on Large Clusters",
+      "author": "Dean, Jeffrey and Ghemawat, Sanjay",
+      "year": 2004,
+      "label": "Dean (2004)",
+      "entry_type": "inproceedings",
+      "citation_count": 2,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "goossens1994latex",
+      "title": "The LaTeX Companion",
+      "author": "Goossens, Michel and Mittelbach, Frank and Samarin, Alexander",
+      "year": 1994,
+      "label": "Goossens (1994)",
+      "entry_type": "book",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "knuth1984literate",
+      "title": "Literate Programming",
+      "author": "Knuth, Donald E.",
+      "year": 1984,
+      "label": "Knuth (1984)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 1,
+      "tags": []
+    },
+    {
+      "id": "lamport1978time",
+      "title": "Time, Clocks, and the Ordering of Events in a Distributed System",
+      "author": "Lamport, Leslie",
+      "year": 1978,
+      "label": "Lamport (1978)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 1,
+      "tags": []
+    },
+    {
+      "id": "shannon1948mathematical",
+      "title": "A Mathematical Theory of Communication",
+      "author": "Shannon, Claude E.",
+      "year": 1948,
+      "label": "Shannon (1948)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    },
+    {
+      "id": "turing1950computing",
+      "title": "Computing Machinery and Intelligence",
+      "author": "Turing, Alan M.",
+      "year": 1950,
+      "label": "Turing (1950)",
+      "entry_type": "article",
+      "citation_count": 0,
+      "cited_by_count": 0,
+      "tags": []
+    }
+  ],
+  "edges": [
+    {
+      "source": "dean2004mapreduce",
+      "target": "knuth1984literate",
+      "weight": 1
+    },
+    {
+      "source": "dean2004mapreduce",
+      "target": "lamport1978time",
+      "weight": 1
+    }
+  ],
+  "summary": {
+    "total_nodes": 8,
+    "total_edges": 2,
+    "connected_components": 6,
+    "avg_degree": 0.5,
+    "max_degree": 2,
+    "isolated_nodes": 5,
+    "largest_component_size": 3,
+    "top_cited": [
+      [
+        "knuth1984literate",
+        1
+      ],
+      [
+        "lamport1978time",
+        1
+      ],
+      [
+        "bernerslee1989information",
+        0
+      ],
+      [
+        "cerf1974protocol",
+        0
+      ],
+      [
+        "dean2004mapreduce",
+        0
+      ]
+    ],
+    "top_citing": [
+      [
+        "dean2004mapreduce",
+        2
+      ],
+      [
+        "bernerslee1989information",
+        0
+      ],
+      [
+        "cerf1974protocol",
+        0
+      ],
+      [
+        "goossens1994latex",
+        0
+      ],
+      [
+        "knuth1984literate",
+        0
+      ]
+    ]
+  }
+}
