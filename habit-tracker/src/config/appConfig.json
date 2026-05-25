@@ -1,0 +1,92 @@
+{
+  "defaultReminderTime": "20:00",
+  "themeColors": {
+    "ocean": {
+      "primary": "#0ea5e9",
+      "secondary": "#06b6d4",
+      "accent": "#f97316"
+    },
+    "forest": {
+      "primary": "#10b981",
+      "secondary": "#059669",
+      "accent": "#f59e0b"
+    },
+    "sunset": {
+      "primary": "#f43f5e",
+      "secondary": "#ec4899",
+      "accent": "#8b5cf6"
+    },
+    "midnight": {
+      "primary": "#6366f1",
+      "secondary": "#8b5cf6",
+      "accent": "#f59e0b"
+    }
+  },
+  "exportFormats": ["json", "csv"],
+  "achievements": [
+    {
+      "id": "first-checkin",
+      "name": "第一步",
+      "description": "完成第一次打卡",
+      "icon": "Star",
+      "condition": "totalCheckins",
+      "threshold": 1
+    },
+    {
+      "id": "streak-7",
+      "name": "坚持一周",
+      "description": "连续打卡7天",
+      "icon": "Flame",
+      "condition": "streak",
+      "threshold": 7
+    },
+    {
+      "id": "streak-30",
+      "name": "月度达人",
+      "description": "连续打卡30天",
+      "icon": "Trophy",
+      "condition": "streak",
+      "threshold": 30
+    },
+    {
+      "id": "streak-100",
+      "name": "百日修行",
+      "description": "连续打卡100天",
+      "icon": "Crown",
+      "condition": "streak",
+      "threshold": 100
+    },
+    {
+      "id": "total-10",
+      "name": "初露锋芒",
+      "description": "累计打卡10次",
+      "icon": "Zap",
+      "condition": "totalCheckins",
+      "threshold": 10
+    },
+    {
+      "id": "total-100",
+      "name": "习惯达人",
+      "description": "累计打卡100次",
+      "icon": "Award",
+      "condition": "totalCheckins",
+      "threshold": 100
+    },
+    {
+      "id": "perfect-week",
+      "name": "完美一周",
+      "description": "一周内所有习惯都完成",
+      "icon": "CheckCircle2",
+      "condition": "perfectWeek",
+      "threshold": 1
+    },
+    {
+      "id": "habits-5",
+      "name": "多面手",
+      "description": "同时追踪5个习惯",
+      "icon": "Layers",
+      "condition": "habitsCount",
+      "threshold": 5
+    }
+  ]
+}
