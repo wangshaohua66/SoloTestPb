@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  read_timeout: 30
+  write_timeout: 30
+  idle_timeout: 60
+
+reminder:
+  check_interval: 60
+  default_water_days: 7
+  default_fertilize_days: 30
+  default_sunlight: "medium"
+  remind_before_hours: 24
+
+storage:
+  plants_file: "data/plants.json"
+  reminders_file: "data/reminders.json"
+  history_file: "data/history.json"
+
+log:
+  level: "info"
+  file: "logs/app.log"
+  max_size: 100
+  max_backups: 3
+  max_age: 28
+  compress: true
+
+concurrency:
+  max_requests: 100
+  timeout_seconds: 30

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "ab48b7af-f0e8-4be2-8a3d-7589f9ad32ad",
+    "plant_id": "56ec5142-b8e1-4032-8e6a-fcd82b6d48a6",
+    "plant_name": "绿萝",
+    "type": "water",
+    "scheduled_at": "2026-05-28T10:49:36.286568+08:00",
+    "remind_at": "2026-05-27T10:49:36.286568+08:00",
+    "status": "pending",
+    "created_at": "2026-05-25T10:49:36.291205+08:00",
+    "notified": false,
+    "notified_at": "0001-01-01T00:00:00Z"
+  },
+  {
+    "id": "9dbff034-21ca-4463-9ff7-1d375040f132",
+    "plant_id": "56ec5142-b8e1-4032-8e6a-fcd82b6d48a6",
+    "plant_name": "绿萝",
+    "type": "fertilize",
+    "scheduled_at": "2026-06-09T10:49:36.286568+08:00",
+    "remind_at": "2026-06-08T10:49:36.286568+08:00",
+    "status": "pending",
+    "created_at": "2026-05-25T10:49:36.291761+08:00",
+    "notified": false,
+    "notified_at": "0001-01-01T00:00:00Z"
+  },
+  {
+    "id": "06988af2-401e-4c9c-aac4-8f1618e3ce65",
+    "plant_id": "a8f1f5b2-9e33-425a-b72c-ebd20a29af24",
+    "plant_name": "绿萝",
+    "type": "fertilize",
+    "scheduled_at": "2026-06-09T10:50:14.386145+08:00",
+    "remind_at": "2026-06-08T10:50:14.386145+08:00",
+    "status": "pending",
+    "created_at": "2026-05-25T10:50:14.389661+08:00",
+    "notified": false,
+    "notified_at": "0001-01-01T00:00:00Z"
+  },
+  {
+    "id": "77645e48-26fa-417c-93df-8245cbd9cf5d",
+    "plant_id": "a8f1f5b2-9e33-425a-b72c-ebd20a29af24",
+    "plant_name": "绿萝",
+    "type": "water",
+    "scheduled_at": "2026-06-01T10:50:14.386145+08:00",
+    "remind_at": "2026-05-31T10:50:14.386145+08:00",
+    "status": "pending",
+    "created_at": "2026-05-25T11:11:44.760362+08:00",
+    "notified": false,
+    "notified_at": "0001-01-01T00:00:00Z"
+  }
+]
